@@ -25,3 +25,61 @@
 
 * GET /
     * Muestra la homepage.
+* GET /
+    * Muestra dentro de la homepage la opción para abrir formulario para login.
+* GET /allcocktails
+    * Renderizar la vista de todos los cócteles
+* GET /allcocktails/:id
+    * Renderizar la ficha del cóctel. 
+* GET /signup
+    * Redirige a / si el usuario está logeado. 
+    * Renderiza el formulario para registrarse. 
+* POST /signup
+    * Envía la información del signup 
+    * Crea un usuario en la base de datos (email, password) 
+* POST /logout
+    * Redirige a / si el usuario está logeado. 
+* GET /privatearea
+    * Formulario para completar/actualizar información personal y actualiza el usuario.
+* POST /updateuserdata
+    * Envía la información personal
+    * Actualizar el usuario en la base de datos
+* GET /createcocktail
+    * Formulario para crear cóctel
+* POST /createcocktail
+    * Recoge la información del formulario y crea un cóctel en la colección de cócteles.
+* GET /editcocktail
+    * Formulario para editar un coctail
+* PUT /editcocktail
+    * Recoge la información del formulario y edita un cóctel ya existente en la colección de cócteles.
+* DELETE /deletecocktail
+    * Botón para borrar el cóctel y elimina un cóctel de la colección de cócteles. 
+
+## MODELS
+
+### User model
+
+email: String
+password: String
+username: String
+profilepic: String
+address: String
+city: String
+postalcode: Number
+country: String
+
+### Cocktail model
+
+owner: ObjectId<User>
+name: String
+cocktail_image: String
+short_description: String
+description: String
+category: [Array]
+ingredients: [Array]
+instructions: [Array]
+creation_date: Date (YYYY-MM-DD)
+
+
+## TRELLO
+https://trello.com/b/lu6J8M3p/cocktail-party
