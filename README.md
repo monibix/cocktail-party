@@ -59,26 +59,26 @@
 
 ### User model
 
-email: String
-password: String
-username: String
-profilepic: String
-address: String
-city: String
-postalcode: Number
-country: String
+* email: String
+* password: String
+* username: String
+* profilepic: String
+* address: String
+* city: String
+* postalcode: Number
+* country: String
 
 ### Cocktail model
 
-owner: ObjectId<User>
-name: String
-cocktail_image: String
-short_description: String
-description: String
-category: [Array]
-ingredients: [Array]
-instructions: [Array]
-creation_date: Date (YYYY-MM-DD)
+* owner: ObjectId<User>
+* name: String
+* cocktail_image: String
+* short_description: String
+* description: String
+* category: [Array]
+* ingredients: [Array]
+* instructions: [Array]
+* creation_date: Date (YYYY-MM-DD)
 
 
 ## TRELLO
