@@ -7,6 +7,7 @@ const cocktailSchema = new Schema({
     longDescription: String, 
     category: String, 
     ingredients: [String], 
+    measures: [String],
     instructions: [String],
 }, 
     {

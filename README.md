@@ -25,11 +25,11 @@
 
 * GET /
     * Muestra la homepage.
-* GET /
-    * Muestra dentro de la homepage la opción para abrir formulario para login.
-* GET /allcocktails
+* GET /login
+    * Muestra el formulario para login.
+* GET /cocktails
     * Renderizar la vista de todos los cócteles
-* GET /allcocktails/:id
+* GET /cocktails/:id
     * Renderizar la ficha del cóctel. 
 * GET /signup
     * Redirige a / si el usuario está logeado. 
@@ -46,13 +46,13 @@
     * Actualizar el usuario en la base de datos
 * GET /createcocktail
     * Formulario para crear cóctel
-* POST /createcocktail
+* POST /cocktails
     * Recoge la información del formulario y crea un cóctel en la colección de cócteles.
 * GET /editcocktail
     * Formulario para editar un coctail
-* PUT /editcocktail
+* PUT /cocktails/edit/:cocktailId
     * Recoge la información del formulario y edita un cóctel ya existente en la colección de cócteles.
-* DELETE /deletecocktail
+* DELETE /cocktails/:cocktailId
     * Botón para borrar el cóctel y elimina un cóctel de la colección de cócteles. 
 
 ## MODELS
@@ -73,12 +73,12 @@
 * owner: ObjectId<User>
 * name: String
 * cocktail_image: String
-* short_description: String
-* description: String
-* category: [Array]
+* shortDescription: String
+* longDescription: String
+* category: String
 * ingredients: [Array]
 * instructions: [Array]
-* creation_date: Date (YYYY-MM-DD)
+* creationDate: Date (YYYY-MM-DD)
 
 
 ## TRELLO
