@@ -1,6 +1,7 @@
 require('dotenv').config()
 
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser')
 const express = require('express');
 const hbs = require('hbs');
 const mongoose = require('mongoose');
@@ -11,7 +12,11 @@ const debug = require('debug')(
   `${app_name}:${path.basename(__filename).split('.')[0]}`
 );
 
-const app = expres()
+const app = express()
+
+app.listen(5000, () => {
+    console.log(`Listening on http://localhost:${process.env.PORT}`);
+  });
 
 // require database configuration
 require('./bin/db.config')
@@ -28,5 +33,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const index = require('./routes/index');
 app.use('/', index);
+
+const cocktails = require('./routes/cocktails')
+app.use('/cocktails', cocktails)
 
 module.exports = app;
