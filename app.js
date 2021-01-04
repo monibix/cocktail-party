@@ -21,6 +21,23 @@ app.listen(5000, () => {
 // require database configuration
 require('./bin/db.config')
 
+const dbOptions = {
+    useCreateIndex: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  }
+  
+async function connectDB() {
+    try {
+      const connnection = await mongoose.connect(process.env.MONGODBURI, dbOptions)
+      console.log('Db connected!')
+    } catch (error) {
+      consolee.log('There is an error connecting the DB', error)
+    }
+  }
+
+connectDB()
+
 // Middleware Setup
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -31,10 +48,13 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 
-const index = require('./routes/index');
+const index = require('./routes/index.routes');
 app.use('/', index);
 
-const cocktails = require('./routes/cocktails')
+const cocktails = require('./routes/cocktails.routes')
 app.use('/cocktails', cocktails)
+
+const auth = require('./routes/auth.routes')
+app.use('/auth', auth)
 
 module.exports = app;

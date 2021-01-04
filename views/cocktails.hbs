@@ -1,1 +1,8 @@
 <h1>Our Cocktails:</h1>
+
+{{#each allCocktails}}
+<h2>{{name}} </h2>
+<a href="cocktails/{{id}}">Cocktail Detail</a>
+<h3>{{shortDescription}}</h3>
+<img src="{{cocktailImage}}" alt="{{name}}">
+{{/each}}
