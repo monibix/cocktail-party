@@ -16,7 +16,8 @@ const newUser = async (req, res) => {
         const randomString = await bcrypt.genSalt(saltRounds)
         const hashedPassword = await bcrypt.hash(password, randomString)
         const newUser = await User.create({ email, password: hashedPassword })
-        req.session.currentUser = user._id;
+        console.log(req.session)
+        req.session.currentUser = newUser._id;
         res.redirect('/')
         console.log('NEW USER:', newUser)
     } catch (err) {
@@ -33,7 +34,7 @@ const loginView = async (req,res) => {
 }
 
 const checkCredentials = (req, res, next) => {
-    const { email, password} = req.body;
+    const { email, password } = req.body;
     const hasMissingCredential = !email || !password;
     if (hasMissingCredential) {
       return res.send("All fields are mandatory");
@@ -55,7 +56,7 @@ const login = async (req, res) => {
             console.log('Incorrect password!!!!!!')
             return res.send('Incorrect password')
         }
-        console.log('USER IS:', user)
+        console.log('USER LOGGED IN IS:', user)
         req.session.currentUser = user._id;
         res.redirect('/')
     } catch (err) {
