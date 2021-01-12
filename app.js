@@ -6,6 +6,8 @@ const express = require('express');
 const hbs = require('hbs');
 const mongoose = require('mongoose');
 const path = require('path');
+const session = require('express-session');
+const connectSession = require('./bin/session.config')
 
 const app_name = require('./package.json').name;
 const debug = require('debug')(
@@ -13,6 +15,7 @@ const debug = require('debug')(
 );
 
 const app = express()
+connectSession(app)
 
 app.listen(5000, () => {
     console.log(`Listening on http://localhost:${process.env.PORT}`);
