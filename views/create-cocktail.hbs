@@ -1,0 +1,49 @@
+<div class="form">
+        <h2>Create a cocktail!</h2>
+        <form class ="form" action="/cocktails/create-cocktail" method="POST">
+            <label class="label" for="name">Name</label>
+            <input class="input" type="text" name="name" id="name" required>
+            <label class="label" for="short-description">Short Description</label>
+            <textarea name="short-description" id="short-description" cols="30" rows="3"></textarea>
+            <label class="label" for="category">Category</label>
+            <select class="input" name="category" id="category" required>
+                <option value="alcoholic">Alcoholic</option>
+                <option value="non-alcoholic">Non alcoholic</option>
+            </select>
+            <div id='ingredients-Measures'>
+            <label class="label" for="ingredient1">Ingredient #1</label>
+            <input class="input" type="text" name="ingredient1" id="ingredient1" required>
+            <label class="label" for="ingredient2">Ingredient #2</label>
+            <input class="input" type="text" name="ingredient2" id="ingredient2">
+            <label class="label" for="ingredient3">Ingredient #3</label>
+            <input class="input" type="text" name="ingredient3" id="ingredient3">
+            <label class="label" for="ingredient1">Ingredient #4</label>
+            <input class="input" type="text" name="ingredient4" id="ingredient4">
+            <label class="label" for="ingredient1">Ingredient #5</label>
+            <input class="input" type="text" name="ingredient5" id="ingredient5">
+
+            <label class="label" for="measure1">Measure #1</label>
+            <input class="input" type="text" name="measure1" id="measure1" required>
+            <label class="label" for="measure2">Measure #2</label>
+            <input class="input" type="text" name="measure2" id="measure2">
+            <label class="label" for="measure3">Measure #3</label>
+            <input class="input" type="text" name="measure3" id="measure3">
+            <label class="label" for="measure1">Measure #4</label>
+            <input class="input" type="text" name="measure4" id="measure4">
+            <label class="label" for="measure1">Measure #5</label>
+            <input class="input" type="text" name="measure5" id="measure5">
+            </div>
+            <label class="label" for="instructions">Instructions</label>
+            <textarea name="instructions" id="instructions" cols="30" rows="3"></textarea>
+            <button type="submit">Create</button>
+        </form>
+</div>
+
+{{!-- "name": "Margarita",
+        "shortDescription": "A margarita is a Mexican cocktail consisting of tequila, orange liqueur, and lime juice often served with salt on the rim of the glass.",
+        "longDescription": "A margarita is a Mexican cocktail consisting of tequila, orange liqueur, and lime juice often served with salt on the rim of the glass. The drink is served shaken with ice (on the rocks), blended with ice (frozen margarita), or without ice (straight up). Although it has become acceptable to serve a margarita in a wide variety of glass types, ranging from cocktail and wine glasses to pint glasses and even large schooners, the drink is traditionally served in the eponymous margarita glass, a stepped-diameter variant of a cocktail glass or champagne coupe.",
+        "category": "Alcoholic",
+        "ingredients": ["Tequila", "Triple sec", "Lime juice", "Salt"],
+        "Measures": ["1 1/2 oz", "1/2 oz", "1 oz"],
+        "instructions": "Rub the rim of the glass with the lime slice to make the salt stick to it. Take care to moisten only the outer rim and sprinkle the salt on it. The salt should present to the lips of the imbiber and never mix into the cocktail. Shake the other ingredients with ice, then carefully pour into the glass.",
+        "cocktailImage": "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg", --}}

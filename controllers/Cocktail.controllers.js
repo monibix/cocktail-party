@@ -1,3 +1,4 @@
+const { render } = require('../app')
 const Cocktail = require('../models/Cocktail.model')
 
 const getCocktails = async (req, res) => {
@@ -20,11 +21,22 @@ const getCocktailDetail = async (req, res) => {
     }
 }
 
+const createCocktailView = async (req, res) => {
+    try {
+        res.render('create-cocktail')
+    } catch (error) {
+        console.log('There is an error in the route createCocktailView', error)
+    }
+}
+
 const createCocktail = async (req, res) => {
     try {
-        
+        const newCocktail = req.body
+        console.log('this is your new cocktail', newCocktail)
+        await Cocktail.create(newCocktail)
+        res.redirect('/cocktails')
     } catch (error) {
-        
+        console.log('There is an error in the route createCocktail', error)
     }
 }
 
@@ -47,6 +59,7 @@ const updateCocktail = async (req, res) => {
 module.exports = {
     getCocktails,
     getCocktailDetail,
+    createCocktailView,
     createCocktail,
     updateCocktail,
     deleteCocktail

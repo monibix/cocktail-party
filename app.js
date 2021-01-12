@@ -22,22 +22,7 @@ app.listen(5000, () => {
   });
 
 // require database configuration
-require('./bin/db.config')
-
-const dbOptions = {
-    useCreateIndex: true,
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  }
-  
-async function connectDB() {
-    try {
-      const connnection = await mongoose.connect(process.env.MONGODBURI, dbOptions)
-      console.log('Db connected!')
-    } catch (error) {
-      consolee.log('There is an error connecting the DB', error)
-    }
-  }
+const connectDB = require('./bin/db.config')
 
 connectDB()
 
