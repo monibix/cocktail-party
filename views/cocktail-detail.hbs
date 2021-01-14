@@ -1,5 +1,18 @@
 <h1>This is your selected Cocktail</h1>
 
 <h2>{{name}}</h2>
-<h3>{{longDescription}}</h3>
+<h3>{{shortDescription}}</h3>
+<h3>{{ingredients}}</h3>
+<h3>{{measures}}</h3>
+<h3>{{instructions}}</h3>
 <img src="{{cocktailImage}}" alt="{{name}}">
+<h3>{{longDescription}}</h3>
+
+<form action="/cocktails/{{id}}/delete" method='POST'>
+    <button type="submit">Delete Cocktail</button>
+</form>
+
+<form action="/cocktails/{{id}}/edit">
+    <button type="submit">Edit Cocktail</button>
+</form>
+
