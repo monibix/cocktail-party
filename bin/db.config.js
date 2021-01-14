@@ -9,6 +9,7 @@ const dbOptions = {
 async function connectDB() {
   try {
     const connnection = await mongoose.connect(process.env.MONGODBURI, dbOptions)
+    console.log("Connected DB")
   } catch (error) {
     consolee.log('There is an error connecting the DB', error)
   }

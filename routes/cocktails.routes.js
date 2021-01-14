@@ -7,7 +7,8 @@ const {
     createCocktailView,
     createCocktail,
     updateCocktail,
-    deleteCocktail
+    deleteCocktail, 
+    editView
 } = require('../controllers/Cocktail.controllers')
 
 /* GET cocktails page */
@@ -16,6 +17,8 @@ router
     .get('/create-cocktail', createCocktailView)
     .get('/:id', getCocktailDetail)
     .post('/create-cocktail', createCocktail)
-    
+    .post('/:id/delete', deleteCocktail)
+    .get('/:id/edit', editView)
+    .post('/:id/edit', updateCocktail)
 
 module.exports = router;
