@@ -1,42 +1,7 @@
 <div class="form">
         <h2>Create a cocktail!</h2>
-        <form class ="form" action="/cocktails/create-cocktail" method="POST">
-            <label class="label" for="name">Name</label>
-            <input class="input" type="text" name="name" id="name" required>
-            <label class="label" for="short-description">Short Description</label>
-            <textarea name="short-description" id="short-description" cols="30" rows="3"></textarea>
-            <label class="label" for="category">Category</label>
-            <select class="input" name="category" id="category" required>
-                <option value="alcoholic">Alcoholic</option>
-                <option value="non-alcoholic">Non alcoholic</option>
-            </select>
-            <div id='ingredients-Measures'>
-            <label class="label" for="ingredient1">Ingredient #1</label>
-            <input class="input" type="text" name="ingredient1" id="ingredient1" required>
-            <label class="label" for="ingredient2">Ingredient #2</label>
-            <input class="input" type="text" name="ingredient2" id="ingredient2">
-            <label class="label" for="ingredient3">Ingredient #3</label>
-            <input class="input" type="text" name="ingredient3" id="ingredient3">
-            <label class="label" for="ingredient1">Ingredient #4</label>
-            <input class="input" type="text" name="ingredient4" id="ingredient4">
-            <label class="label" for="ingredient1">Ingredient #5</label>
-            <input class="input" type="text" name="ingredient5" id="ingredient5">
 
-            <label class="label" for="measure1">Measure #1</label>
-            <input class="input" type="text" name="measure1" id="measure1" required>
-            <label class="label" for="measure2">Measure #2</label>
-            <input class="input" type="text" name="measure2" id="measure2">
-            <label class="label" for="measure3">Measure #3</label>
-            <input class="input" type="text" name="measure3" id="measure3">
-            <label class="label" for="measure1">Measure #4</label>
-            <input class="input" type="text" name="measure4" id="measure4">
-            <label class="label" for="measure1">Measure #5</label>
-            <input class="input" type="text" name="measure5" id="measure5">
-            </div>
-            <label class="label" for="instructions">Instructions</label>
-            <textarea name="instructions" id="instructions" cols="30" rows="3"></textarea>
-            <button type="submit">Create</button>
-        </form>
+    {{> form}}
 </div>
 
 {{!-- "name": "Margarita",

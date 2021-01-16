@@ -23,7 +23,9 @@ const getCocktailDetail = async (req, res) => {
 
 const createCocktailView = async (req, res) => {
     try {
-        res.render('create-cocktail')
+        const button = "Create"
+        const action = "/cocktails/create-cocktail"
+        res.render('create-cocktail', {button, action})
     } catch (error) {
         console.log('There is an error in the route createCocktailView', error)
     }
@@ -41,9 +43,10 @@ return [measure1, measure2, measure3, measure4, measure5].filter(Boolean)
 
 const createCocktail = async (req, res) => {
     try {
-        const { name, shortDescription, longDescription, category, instructions, cocktailImage } = req.body
+        const { name, shortDescription, longDescription, category, instructions } = req.body
         const ingredients = formatIngredients(req.body)
         const measures = formatMeasures(req.body)
+        const cocktailImage = req.file.path
         const newRecipe = await Cocktail.create({name, shortDescription, longDescription, category, instructions, cocktailImage, ingredients, measures})
         console.log('this is your new cocktail', newRecipe)
         res.redirect('/cocktails')
@@ -75,13 +78,13 @@ const editView = async (req, res) => {
     try {
         const { id } = req.params
         const action = `/cocktails/${id}/edit`;
-        //problema con resCocktail
-        const { ingredients, measures, ...resCocktail } = await Cocktail.findById(id);
+        const button = 'Edit'
+        const { ingredients, measures, ...resCocktail } = await Cocktail.findById(id).lean();
         const formattedIngredients = formatData(ingredients, "ingredient")
         const formattedMeasure = formatData(measures, "measure")
         console.log("RESCOCKTAIL", resCocktail)
 
-        res.render('edit-cocktail', {action, ...resCocktail, ...formattedIngredients, ...formattedMeasure })
+        res.render('edit-cocktail', {action, button, ...resCocktail, ...formattedIngredients, ...formattedMeasure })
     } catch (error) {
         console.log('There is an error in the route editCocktail', error)
     }
@@ -90,15 +93,16 @@ const editView = async (req, res) => {
 const updateCocktail = async (req, res) => {
     try {
         const { id } = req.params
-        const { name, shortDescription, longDescription, category, instructions, cocktailImage } = req.body
+        const { name, shortDescription, category, instructions } = req.body
         const ingredients = formatIngredients(req.body)
         const measures = formatMeasures(req.body)
+        const imageUrl = req.file.path
+        console.log("IMAGEN:",imageUrl)
         const newObj = {name: name, 
                         shortDescription: shortDescription, 
-                        longDescription: longDescription, 
                         category: category,
                         instructions: instructions, 
-                        cocktailImage: cocktailImage, 
+                        cocktailImage: imageUrl, 
                         ingredients: ingredients, 
                         measures: measures
         }

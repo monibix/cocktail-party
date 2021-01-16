@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router();
+const fileParser = require('../bin/cloudinary.config')
 
 const {
     getCocktails,
@@ -16,9 +17,9 @@ router
     .get('/', getCocktails)
     .get('/create-cocktail', createCocktailView)
     .get('/:id', getCocktailDetail)
-    .post('/create-cocktail', createCocktail)
+    .post('/create-cocktail', fileParser.single("cocktail-image"), createCocktail)
     .post('/:id/delete', deleteCocktail)
     .get('/:id/edit', editView)
-    .post('/:id/edit', updateCocktail)
+    .post('/:id/edit', fileParser.single("cocktail-image"), updateCocktail)
 
 module.exports = router;
