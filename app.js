@@ -17,7 +17,7 @@ const debug = require('debug')(
 const app = express()
 connectSession(app)
 
-app.listen(5000, () => {
+app.listen(process.env.PORT, () => {
     console.log(`Listening on http://localhost:${process.env.PORT}`);
   });
 
