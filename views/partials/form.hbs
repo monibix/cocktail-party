@@ -1,39 +1,43 @@
 <div class="form">
-        <form class ="form" action="{{action}}" method="POST">
+        <form class ="form" action="{{action}}" method="POST" enctype="multipart/form-data">
             <label class="label" for="name">Name</label>
-            <input class="input" type="text" name="name" id="name" value={{name}} required>
+            <input class="input" type="text" name="name" id="name" value="{{name}}" required>
             <label class="label" for="short-description">Short Description</label>
-            <textarea name="short-description" id="short-description" cols="30" rows="3" value={{shortDescription}}></textarea>
+            <textarea name="shortDescription" id="short-description" cols="30" rows="3" value="{{shortDescription}}"></textarea>
             <label class="label" for="category">Category</label>
-            <select class="input" name="category" id="category" value={{category}} required>
+            <select class="input" name="category" id="category" value="{{category}}" required>
                 <option value="alcoholic">Alcoholic</option>
                 <option value="non-alcoholic">Non alcoholic</option>
             </select>
             <div id='ingredients-Measures'>
             <label class="label" for="ingredient1">Ingredient #1</label>
-            <input class="input" type="text" name="ingredient1" id="ingredient1" value={{ingredient1}} required>
+            <input class="input" type="text" name="ingredient1" id="ingredient1" value="{{ingredient1}}" required>
             <label class="label" for="ingredient2">Ingredient #2</label>
-            <input class="input" type="text" name="ingredient2" id="ingredient2" value={{ingredient2}}>
+            <input class="input" type="text" name="ingredient2" id="ingredient2" value="{{ingredient2}}">
             <label class="label" for="ingredient3">Ingredient #3</label>
-            <input class="input" type="text" name="ingredient3" id="ingredient3" value={{ingredient3}}>
+            <input class="input" type="text" name="ingredient3" id="ingredient3" value="{{ingredient3}}">
             <label class="label" for="ingredient1">Ingredient #4</label>
-            <input class="input" type="text" name="ingredient4" id="ingredient4" value={{ingredient4}}>
+            <input class="input" type="text" name="ingredient4" id="ingredient4" value="{{ingredient4}}">
             <label class="label" for="ingredient1">Ingredient #5</label>
-            <input class="input" type="text" name="ingredient5" id="ingredient5" value={{ingredient5}}>
+            <input class="input" type="text" name="ingredient5" id="ingredient5" value="{{ingredient5}}">
 
             <label class="label" for="measure1">Measure #1</label>
-            <input class="input" type="text" name="measure1" id="measure1" required>
+            <input class="input" type="text" name="measure1" id="measure1" value="{{measure1}}" required>
             <label class="label" for="measure2">Measure #2</label>
-            <input class="input" type="text" name="measure2" id="measure2">
+            <input class="input" type="text" name="measure2" id="measure2" value="{{measure2}}">
             <label class="label" for="measure3">Measure #3</label>
-            <input class="input" type="text" name="measure3" id="measure3">
+            <input class="input" type="text" name="measure3" id="measure3" value="{{measure3}}">
             <label class="label" for="measure1">Measure #4</label>
-            <input class="input" type="text" name="measure4" id="measure4">
+            <input class="input" type="text" name="measure4" id="measure4" value="{{measure4}}">
             <label class="label" for="measure1">Measure #5</label>
-            <input class="input" type="text" name="measure5" id="measure5">
+            <input class="input" type="text" name="measure5" id="measure5" value="{{measure5}}">
             </div>
             <label class="label" for="instructions">Instructions</label>
-            <textarea name="instructions" id="instructions" cols="30" rows="3"></textarea>
-            <button type="submit">Create</button>
+            <textarea name="instructions" id="instructions" cols="30" rows="3" value="{{instructions}}"></textarea>
+
+            <label for="cocktail-image">Upload Image</label>
+            <input type="file" name="cocktail-image" >
+
+            <button type="submit">{{button}}</button>
         </form>
 </div>

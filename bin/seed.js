@@ -144,7 +144,7 @@ const connectDb = require('../bin/db.config')
 const Cocktail = require('../models/Cocktail.model')
 const mongoose = require("mongoose");
 const { db } = require("../models/Cocktail.model");
-  
+
 const dbOptions = {
     useCreateIndex: true,
     useNewUrlParser: true,
@@ -153,7 +153,7 @@ const dbOptions = {
 
 async function seedDb() {
     try {
-        await mongoose.connect("mongodb://localhost/cocktaildb", dbOptions) // process.env.MONGODB_URL
+        await mongoose.connect(process.env.MONGODB_URI_PROD, dbOptions) // process.env.MONGODB_URL
         const cocktails = await Cocktail.create(cocktailData)
         console.log('This is your cocktail data!!!!',cocktailData)
         mongoose.connection.close()
