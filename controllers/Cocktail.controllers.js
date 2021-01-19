@@ -49,7 +49,7 @@ const createCocktail = async (req, res) => {
         const cocktailImage = req.file.path
         const newRecipe = await Cocktail.create({name, shortDescription, longDescription, category, instructions, cocktailImage, ingredients, measures})
         console.log('this is your new cocktail', newRecipe)
-        res.redirect('/cocktails')
+        res.redirect('/auth/user-profile')
     } catch (error) {
         console.log('There is an error in the route createCocktail', error)
     }
@@ -96,7 +96,7 @@ const updateCocktail = async (req, res) => {
         const { name, shortDescription, category, instructions } = req.body
         const ingredients = formatIngredients(req.body)
         const measures = formatMeasures(req.body)
-        const imageUrl = req.file.path //error si usuario 
+        const imageUrl = req.file && req.file.path
         console.log("IMAGEN:",imageUrl)
         const newObj = {name: name, 
                         shortDescription: shortDescription, 

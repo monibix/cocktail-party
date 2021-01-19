@@ -1,8 +1,9 @@
-<h1>Our Cocktails:</h1>
-
-{{#each allCocktails}}
-<h2>{{name}} </h2>
-<a href="cocktails/{{id}}">Cocktail Detail</a>
-<h3>{{shortDescription}}</h3>
-<img src="{{cocktailImage}}" alt="{{name}}">
-{{/each}}
+<h1 class="title">Our Cocktails:</h1>
+    {{#each allCocktails}}
+        <div class="cocktail-card">
+            <h2 class="cocktail-title">{{name}} </h2>
+            <img class="cocktails-view-images"src="{{cocktailImage}}" alt="{{name}}">
+            <h3 class="short-description">{{shortDescription}}</h3>
+            <a class="cocktail-link" href="cocktails/{{id}}">Learn more</a>
+        </div>
+    {{/each}}
