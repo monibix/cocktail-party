@@ -1,4 +1,4 @@
-<h1>This is your selected Cocktail</h1>
+{{!-- <h1>This is your selected Cocktail</h1>
 
 <h2>{{name}}</h2>
 <h3>{{shortDescription}}</h3>
@@ -14,5 +14,53 @@
 
 <form action="/cocktails/{{id}}/edit">
     <button type="submit">Edit Cocktail</button>
-</form>
+</form> --}}
 
+
+<div class="cocktail-card">
+
+    <div class="cocktail-image-container">
+        <img class="cocktail-image" src="{{cocktailImage}}" alt="{{name}}">
+    </div>
+
+    <div class="right-card">
+
+    <div class="cocktail-description">
+        <h1>{{name}}</h1>
+        <p>{{shortDescription}}</p>
+        <div class="ingredients-measures-list">
+            <div class="ingredients-list">
+                <h4>Ingredients</h4>
+                <ul class="ingredients-list">
+                    {{#each ingredients}}
+                    <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+            <div class="measures-list">
+                <h4>Measures</h4>
+                <ul class="measures-list">
+                    {{#each measures}}
+                    <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+        <h4>Instructions</h4>
+        <p>{{instructions}}</p>
+        <h4>Description</h4>
+        <p>{{longDescription}}</p>
+    </div>
+
+    <div class="cocktail-buttons">
+        <form action="/cocktails/{{id}}/delete" method='POST'>
+            <button type="submit">Delete Cocktail</button>
+        </form>
+        <form action="/cocktails/{{id}}/edit">
+            <button type="submit">Edit Cocktail</button>
+        </form>
+    </div>
+
+    </div>
+
+</div>

@@ -15,6 +15,8 @@ const UserSchema = new mongoose.Schema({
         required: true, 
         trim: true
     }, 
+    //favoritos [], 
+    //foto, telefono, direccion, historia
 })
 
 module.exports = mongoose.model( "User", UserSchema );
