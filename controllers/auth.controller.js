@@ -37,7 +37,7 @@ const checkCredentials = (req, res, next) => {
     const { email, password } = req.body;
     const hasMissingCredential = !email || !password;
     if (hasMissingCredential) {
-      return res.send("All fields are mandatory");
+        return res.send("All fields are mandatory");
     }
     next();
 };
@@ -54,11 +54,13 @@ const login = async (req, res) => {
         const verifyPassword = await bcrypt.compare(password, user.password)
         if (!verifyPassword) {
             console.log('Incorrect password!!!!!!')
-            return res.send('Incorrect password')
+            //return alert("This password is not correct")
+            //return res.send('Incorrect password')
+            return res.render('login', {error: "Password Incorrect"})
         }
         console.log('USER LOGGED IN IS:', user)
         req.session.currentUser = user._id;
-        res.redirect('/')
+        res.render('user-profile', user )
     } catch (err) {
         console.log('Error Here!!!!!',err)
     }
@@ -77,6 +79,17 @@ const logInCheck = (req, res, next) => {
     next()
 }
 
+const logInCheckEmpieza = (req, res, next) => {
+    if (!req.session.currentUser) {
+        const ruta = '/auth/signup'
+        res.render(ruta)
+    } else {
+        res.render('auth/user-profile', )
+    }
+}
+
+
+
 module.exports = {
     signupView,
     loginView,
@@ -84,5 +97,6 @@ module.exports = {
     checkCredentials,
     login,
     logout,
-    logInCheck
+    logInCheck,
+    logInCheckEmpieza
 }

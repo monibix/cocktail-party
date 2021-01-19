@@ -14,9 +14,22 @@ const UserSchema = new mongoose.Schema({
         type: String, 
         required: true, 
         trim: true
+    },
+    username: {
+        type: String, 
+        default: 'Bartender'
+    },  
+    phone: Number,
+    favourites: Array,
+    myCocktails: Array, 
+    userImage: {
+        type: String, 
+        default: 'https://res.cloudinary.com/monibix/image/upload/v1611084105/cocktailparty/default-user_yq8kve.png'
     }, 
-    //favoritos [], 
-    //foto, telefono, direccion, historia
+    address: String, 
+    aboutUser: String
 })
 
 module.exports = mongoose.model( "User", UserSchema );
+
+

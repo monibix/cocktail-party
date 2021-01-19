@@ -8,7 +8,8 @@ const {
     checkCredentials,
     login,
     logout,
-    logInCheck
+    logInCheck, 
+    logInCheckEmpieza
 } = require('../controllers/auth.controller')
 
 router
@@ -17,6 +18,8 @@ router
     .post('/signup', checkCredentials, newUser)
     .post('/login', checkCredentials, login)
     .post('/logout', logout)
+    .get('/user-profile', login)
+    .get('/', logInCheckEmpieza)
     
 module.exports = router;
 
