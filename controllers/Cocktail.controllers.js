@@ -96,7 +96,7 @@ const updateCocktail = async (req, res) => {
         const { name, shortDescription, category, instructions } = req.body
         const ingredients = formatIngredients(req.body)
         const measures = formatMeasures(req.body)
-        const imageUrl = req.file.path
+        const imageUrl = req.file.path //error si usuario 
         console.log("IMAGEN:",imageUrl)
         const newObj = {name: name, 
                         shortDescription: shortDescription, 
