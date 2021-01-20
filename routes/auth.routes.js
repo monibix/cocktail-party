@@ -19,7 +19,7 @@ router
     .post('/login', checkCredentials, login)
     .post('/logout', logout)
     .get('/user-profile', login)
-    .get('/', logInCheckEmpieza)
+    //.get('/', logInCheckEmpieza)
     
 module.exports = router;
 

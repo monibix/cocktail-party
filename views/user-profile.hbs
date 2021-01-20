@@ -1,16 +1,35 @@
-<h1>Welcome to your personal space</h1>
+<div id="user-profile">
 
-<p>{{username}}</p>
-<img src="{{userImage}}" alt="User Image">
-<p>{{email}}</p>
+    <h1 class="title">Welcome to your personal space</h1>
 
-<a href="/cocktails/create-cocktail">Create Cocktail</a>
-{{!-- foto
+        <div class="user-card">
+            <img class="user-image"src="{{userImage}}" alt="User Image">
+            <h2 class="cocktail-title">{{name}} Username </h2>
+            <p class="email">{{email}}</p>
+            <p class="phone">{{phone}}+34 678 901 234</p>
+            <h3>About me</h3>
+            <p class="about">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+            
+            <div class="address-container">
+                <div class="address-title-container">
+                    <h4>Where I live</h4>
+                    <p class="address">{{useraddress}}C/Monistrol 34, 08025 Barcelona SPAIN</p>
+                </div>
+                <div class="address-map-container">
+                    <h4>View on Maps</h4>
+                    <img src="/images/completa.png" alt="">
+                </div>
+            </div>
 
-Username default
+            <h3>My favourites Cocktails</h3>
 
-about
 
-favorites cocktails --> foreach
+            <h3>My own Cocktails creations</h3>
 
-mycocktails --}}
+            <div class="buttons-container">
+                <a class="button" href="#">Edit personal info</a> {{!-- crear formulario edición usuario, controlador y ruta --}}
+                <a class="button" href="/cocktails/create-cocktail">Create new Cocktail</a>
+            </div>
+        </div>
+
+</div>
