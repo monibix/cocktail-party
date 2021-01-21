@@ -21,7 +21,12 @@ const UserSchema = new mongoose.Schema({
     },  
     phone: Number,
     favourites: Array,
-    myCocktails: Array, 
+    myCocktails: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Cocktail'
+        }
+    ], 
     userImage: {
         type: String, 
         default: 'https://res.cloudinary.com/monibix/image/upload/v1611084105/cocktailparty/default-user_yq8kve.png'

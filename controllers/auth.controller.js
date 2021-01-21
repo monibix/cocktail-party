@@ -35,6 +35,7 @@ const loginView = async (req,res) => {
 
 const checkCredentials = (req, res, next) => {
     const { email, password } = req.body;
+    console.log("CHECKCREDENTIALS:", req.body)
     const hasMissingCredential = !email || !password;
     if (hasMissingCredential) {
         return res.send("All fields are mandatory");
@@ -45,8 +46,10 @@ const checkCredentials = (req, res, next) => {
 const login = async (req, res) => {
     try {
         const {email, password} = req.body
+        const { id } = req.params
         const user = await User.findOne({ email })
         if (!user) {
+            console.log("ID undefined??", id)
             console.log('User does not exist!!!!!!')
             return res.send('User does not exist')
         }
@@ -73,6 +76,7 @@ const logout = (req,res)=> {
 }
 
 const logInCheck = (req, res, next) => {
+    console.log("reqbody:", req.body)
     if (!req.session.currentUser) {
         res.send('You are not logged in!')
     }
@@ -95,28 +99,28 @@ const logInCheckEmpieza = (req, res, next) => {
 const userProfileView = async (req, res) => {
     try {
         const { id } = req.params
-
-        const userInfo = await User.findById(id)
+        
+        const userInfo = await User.findById(id).populate('myCocktails')
         console.log("userinfo", userInfo)
+
+
+
         res.render('user-profile', userInfo)
         
     } catch (error) {
         res.send('userprofileview error')
-        
     }
 }
 
 const updateUserProfile = async (req, res) => {
     try {
         const { id } = req.params
-        const { username, about, phone, address } = req.body
         const imageUrl = req.file && req.file.path
         console.log("user profile:",req.body)
-        const updatedUser = {username: username, 
-                        about: about, 
-                        phone: phone, 
-                        address: address, 
-                        userImage: imageUrl
+        console.log("IMAGE URL", imageUrl)
+        const updatedUser = {
+            ...req.body,
+            userImage: imageUrl
         }
         console.log("UPDATEDUSER", updatedUser)
         await User.findByIdAndUpdate(id, updatedUser)
@@ -124,7 +128,7 @@ const updateUserProfile = async (req, res) => {
         res.redirect(`/auth/user-profile/${id}`)
 
     } catch (error) {
-        console.log('There is an error in the updateCocktail', error)
+        console.log('There is an error in the update user', error)
     }
 }
 

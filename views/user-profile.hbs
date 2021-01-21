@@ -8,7 +8,7 @@
             <p class="email">{{email}}</p>
             <p class="phone">{{phone}}+34 678 901 234</p>
             <h3>About me</h3>
-            <p class="about">{{about}}Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+            <p class="about">{{aboutUser}}Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
             
             <div class="address-container">
                 <div class="address-title-container">
@@ -26,6 +26,11 @@
 
 
             <h3>My own Cocktails creations</h3>
+            {{#each myCocktails}}
+                <p>{{name}}</p>
+            {{/each}}
+
+
 
             <div class="buttons-container">
                 <a class="button" href="#">Update personal info</a> {{!-- crear formulario edición usuario, controlador y ruta --}}
@@ -37,22 +42,22 @@
 
 <div class="user-profile-form">
 
-        <form class ="user-profile-form-card" action="/auth/user-profile/{{id}}" method="POST" enctype="multipart/form-data">
+        <form class ="user-profile-form-card" action="/auth/user-profile/{{_id}}" method="POST" >
 
             <label class="label" for="username">Username</label>
-            <input class="input" type="text" username="username" id="username">
+            <input class="input" type="text" name="username" id="username">
 
             <label class="label" for="aboutUser">About</label>
             <textarea class="input" name="aboutUser" cols="30" rows="3" value="{{aboutUser}}" placeholder="Tell us something about you..."></textarea>
 
             <label class="label" for="phone">Phone Number</label>
-            <input class="input" type="text" phone="phone" id="phone" value="{{phone}}">
+            <input class="input" type="tel" name="phone" id="phone" value="{{phone}}" pattern=“[0-9]{9}”>
 
             <label class="label" for="address">Address</label>
-            <input class="input" type="text" address="address" id="address" value="{{address}}">
+            <input class="input" type="text" name="address" id="address" value="{{address}}">
 
-            <label class="label" for="userImage">Upload Image</label>
-            <input type="file" name="userImage">
+            {{!-- <label class="label" for="userImage">Upload Image</label>
+            <input type="file" name="userImage" id="userImage"> --}}
 
             <button type="submit">Update Profile{{button}}</button>
         </form>
