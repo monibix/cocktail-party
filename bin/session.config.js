@@ -9,7 +9,7 @@ const connectSession = (app) => {
       secret: "djs3dfn4982hfwweuf83",
       resave: false,
       saveUninitialized: true,
-      cookie: { maxAge: 60000 },
+      cookie: { maxAge: 3600000 },
       store: new MongoStore({
         mongooseConnection: mongoose.connection,
         // time to live

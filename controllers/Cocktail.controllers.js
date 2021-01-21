@@ -1,10 +1,12 @@
 require('../app')
 const Cocktail = require('../models/Cocktail.model')
+const User = require('../models/User.model')
 
 const getCocktails = async (req, res) => {
     try {
+        const _id = req.session.currentUser
         const allCocktails = await Cocktail.find()
-        res.render('cocktails', {allCocktails})
+        res.render('cocktails', {allCocktails, _id})
     } catch (error) {
         console.log('There is an error in the route getCocktails', error)
     }
@@ -23,9 +25,10 @@ const getCocktailDetail = async (req, res) => {
 
 const createCocktailView = async (req, res) => {
     try {
+        const _id = req.session.currentUser
         const button = "Create"
         const action = "/cocktails/create-cocktail"
-        res.render('create-cocktail', {button, action})
+        res.render('create-cocktail', {button, action, _id})
     } catch (error) {
         console.log('There is an error in the route createCocktailView', error)
     }
@@ -43,13 +46,22 @@ return [measure1, measure2, measure3, measure4, measure5].filter(Boolean)
 
 const createCocktail = async (req, res) => {
     try {
+        const _id = req.session.currentUser
         const { name, shortDescription, longDescription, category, instructions } = req.body
         const ingredients = formatIngredients(req.body)
         const measures = formatMeasures(req.body)
         const cocktailImage = req.file.path
         const newRecipe = await Cocktail.create({name, shortDescription, longDescription, category, instructions, cocktailImage, ingredients, measures})
+        
+        const userCreateCocktail = await User.findByIdAndUpdate(_id, {$push:{myCocktails:newRecipe._id}}, {new:true})
+        console.log("USERCREATECOCKTAIL", userCreateCocktail)
+        
+        userCreateCocktail.myCocktails.push(newRecipe)
+        console.log("USERCREATECOCKTAIL22", userCreateCocktail)
+
+        
         console.log('this is your new cocktail', newRecipe)
-        res.redirect('/auth/user-profile')
+        res.redirect('/auth/user-profile/'+_id)
     } catch (error) {
         console.log('There is an error in the route createCocktail', error)
     }
