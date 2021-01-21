@@ -78,7 +78,7 @@ const editView = async (req, res) => {
     try {
         const { id } = req.params
         const action = `/cocktails/${id}/edit`;
-        const button = 'Edit'
+        const button = 'Edit Cocktail'
         const { ingredients, measures, ...resCocktail } = await Cocktail.findById(id).lean();
         const formattedIngredients = formatData(ingredients, "ingredient")
         const formattedMeasure = formatData(measures, "measure")

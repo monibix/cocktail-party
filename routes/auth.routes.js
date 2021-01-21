@@ -9,7 +9,9 @@ const {
     login,
     logout,
     logInCheck, 
-    logInCheckEmpieza
+    logInCheckEmpieza, 
+    userProfileView,
+    updateUserProfile, 
 } = require('../controllers/auth.controller')
 
 router
@@ -19,7 +21,12 @@ router
     .post('/login', checkCredentials, login)
     .post('/logout', logout)
     .get('/user-profile', login)
-    .get('/', logInCheckEmpieza)
+    //.get('/', logInCheckEmpieza)
+
+
+    .get('/user-profile/:id', userProfileView)
+
+    .post('/user-profile/:id', updateUserProfile)
     
 module.exports = router;
 

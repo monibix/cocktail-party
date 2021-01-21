@@ -1,24 +1,6 @@
-{{!-- <h1>This is your selected Cocktail</h1>
-
-<h2>{{name}}</h2>
-<h3>{{shortDescription}}</h3>
-<h3>{{ingredients}}</h3>
-<h3>{{measures}}</h3>
-<h3>{{instructions}}</h3>
-<img src="{{cocktailImage}}" alt="{{name}}">
-<h3>{{longDescription}}</h3>
-
-<form action="/cocktails/{{id}}/delete" method='POST'>
-    <button type="submit">Delete Cocktail</button>
-</form>
-
-<form action="/cocktails/{{id}}/edit">
-    <button type="submit">Edit Cocktail</button>
-</form> --}}
-
-
-<div class="cocktail-card">
-
+<div id="cocktail-detail">
+    <div class="cocktail-detail-card">
+    <h1 class="cocktail-title">{{name}}</h1>
     <div class="cocktail-image-container">
         <img class="cocktail-image" src="{{cocktailImage}}" alt="{{name}}">
     </div>
@@ -26,7 +8,7 @@
     <div class="right-card">
 
     <div class="cocktail-description">
-        <h1>{{name}}</h1>
+        
         <p>{{shortDescription}}</p>
         <div class="ingredients-measures-list">
             <div class="ingredients-list">
@@ -61,6 +43,7 @@
         </form>
     </div>
 
+    </div>
     </div>
 
 </div>

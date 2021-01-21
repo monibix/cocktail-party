@@ -1,7 +1,63 @@
-// @mixin button {
-//     margin: 1rem 1.75rem;
-//     padding: 0.5rem 1.5rem;
-//     border-radius: 7px;
-//     background-color: yellow;
-//     font-weight: bold;
-// }
+@mixin default-settings {
+    background-color: $background-color;
+    color: $text-color;
+    font-family: 'Raleway', sans-serif;
+}
+
+@mixin button-moni {
+    margin: 1rem 1.75rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 7px;
+    background-color: $button-color;
+    font-weight: bold;
+    color: $background-color
+}
+
+@mixin button {
+    align-self: center;
+    text-decoration: none;
+    background-color: #EB596E;
+    padding: 10px 14px;
+    color: white;
+    text-align: center;
+    border-radius: 25px;
+    margin: 20px 0px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+@mixin button-hover{
+    text-decoration: none;
+    background-color: white;
+    color: #EB596E;
+    transition-duration: 0.4s;
+}
+
+@mixin footer {
+    background-color: black;
+    font-size: 0.75rem;
+    color: #c1c1c1;
+    text-align: center;
+}
+
+@mixin card {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    margin: 10px 20px 10px 20px;
+    background-color: #2b323b;
+    border-radius: 10px;
+    box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
+}
+
+@mixin cocktail-title {
+
+}
