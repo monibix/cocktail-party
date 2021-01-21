@@ -223,10 +223,24 @@ body { //no funciona
     }
     .button {
         @include button;
-        margin: 0px 30px;
+        margin: 0px 10px;
     }
     .button:hover {
         @include button-hover
     }
 
+}
+
+/*USER PROFILE FORM*/
+.user-profile-form{
+    @include default-settings;
+    .user-profile-form-card {
+        @include card;
+    }
+    button {
+        @include button;
+    }
+    button:hover{
+        @include button-hover;
+    }
 }

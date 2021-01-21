@@ -84,7 +84,47 @@ const logInCheckEmpieza = (req, res, next) => {
         const ruta = '/auth/signup'
         res.render(ruta)
     } else {
-        res.render('auth/user-profile', )
+        res.render('auth/user-profile' )
+    }
+}
+
+
+
+
+
+const userProfileView = async (req, res) => {
+    try {
+        const { id } = req.params
+
+        const userInfo = await User.findById(id)
+        console.log("userinfo", userInfo)
+        res.render('user-profile', userInfo)
+        
+    } catch (error) {
+        res.send('userprofileview error')
+        
+    }
+}
+
+const updateUserProfile = async (req, res) => {
+    try {
+        const { id } = req.params
+        const { username, about, phone, address } = req.body
+        const imageUrl = req.file && req.file.path
+        console.log("user profile:",req.body)
+        const updatedUser = {username: username, 
+                        about: about, 
+                        phone: phone, 
+                        address: address, 
+                        userImage: imageUrl
+        }
+        console.log("UPDATEDUSER", updatedUser)
+        await User.findByIdAndUpdate(id, updatedUser)
+
+        res.redirect(`/auth/user-profile/${id}`)
+
+    } catch (error) {
+        console.log('There is an error in the updateCocktail', error)
     }
 }
 
@@ -98,5 +138,7 @@ module.exports = {
     login,
     logout,
     logInCheck,
-    logInCheckEmpieza
+    logInCheckEmpieza, 
+    userProfileView, //muestra user-profile-view con id usuario
+    updateUserProfile, //actualiza info usuario
 }
