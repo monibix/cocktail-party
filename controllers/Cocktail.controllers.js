@@ -14,6 +14,7 @@ const getCocktails = async (req, res) => {
 
 const getCocktailDetail = async (req, res) => {
     try {
+        const _id = req.session.currentUser
         const { id } = req.params
         const details = await Cocktail.findById(id);
         console.log('show me now the cocktail details!!!! ', details)
@@ -88,6 +89,7 @@ function formatData(ingredients, domain){
 }
 const editView = async (req, res) => {
     try {
+        const _id = req.session.currentUser
         const { id } = req.params
         const action = `/cocktails/${id}/edit`;
         const button = 'Edit Cocktail'
@@ -96,7 +98,7 @@ const editView = async (req, res) => {
         const formattedMeasure = formatData(measures, "measure")
         console.log("RESCOCKTAIL", resCocktail)
 
-        res.render('edit-cocktail', {action, button, ...resCocktail, ...formattedIngredients, ...formattedMeasure })
+        res.render('edit-cocktail', {action, button, ...resCocktail, ...formattedIngredients, ...formattedMeasure, _id })
     } catch (error) {
         console.log('There is an error in the route editCocktail', error)
     }
@@ -104,6 +106,7 @@ const editView = async (req, res) => {
 
 const updateCocktail = async (req, res) => {
     try {
+        const _id = req.session.currentUser
         const { id } = req.params
         const { name, shortDescription, category, instructions } = req.body
         const ingredients = formatIngredients(req.body)
@@ -122,6 +125,7 @@ const updateCocktail = async (req, res) => {
         const cocktail = await Cocktail.findByIdAndUpdate(id, newObj)
 
         res.redirect(`/cocktails/${id}`)
+        //res.render('cocktail-detail', {_id})
 
     } catch (error) {
         console.log('There is an error in the updateCocktail', error)
