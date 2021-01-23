@@ -14,14 +14,15 @@ const {
     userProfileView,
     updateUserProfile, 
     favouritesView,
-    updateFavourites
+    updateFavourites,
+    userCheck
 } = require('../controllers/auth.controller')
 
 router
     .get('/signup', signupView)
     .get('/login', loginView)
     
-    .post('/signup', checkCredentials, newUser)
+    .post('/signup', checkCredentials, userCheck, newUser)
     .post('/login', checkCredentials, login)
     .post('/logout', logout)
     //.get('/user-profile', login)
