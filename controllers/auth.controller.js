@@ -1,3 +1,4 @@
+require('dotenv').config()
 const User = require('../models/User.model')
 const bcrypt = require('bcryptjs')
 const saltRounds = 10;
@@ -10,17 +11,14 @@ const signupView = async (req,res) => {
     }
 }
 
-const userCheck = async (req, res) => {
-    const { email } = req.body;
-    const usersList = await User.find({});
-    console.log("This is the userlist",usersList);
-    const users = usersList.map(user => {
-    const existsAlready = users.includes(user._id)
-        return {
-            ...cocktail,
-            isFavourite
-        }
-    })
+const userCheck = async (req, res, next) => {
+    try {
+        const { email } = req.body;
+        const usersList = await User.findOne({email});
+        res.render()
+    } catch (error) {
+        console.log('There is an error in userCheck!', error)
+    }
 }
 
 const newUser = async (req, res) => {
@@ -76,7 +74,7 @@ const login = async (req, res) => {
         }
         console.log('USER LOGGED IN IS:', user)
         req.session.currentUser = user._id;
-        res.render('user-profile', user )
+        res.render('user-profile', user)
     } catch (err) {
         console.log('Error Here!!!!!',err)
     }
@@ -171,5 +169,6 @@ module.exports = {
     userProfileView, //muestra user-profile-view con id usuario
     updateUserProfile, //actualiza info usuario
     favouritesView,
-    updateFavourites
+    updateFavourites,
+    userCheck
 }
