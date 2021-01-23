@@ -20,7 +20,11 @@ const UserSchema = new mongoose.Schema({
         default: 'Bartender'
     },  
     phone: Number,
-    favourites: Array,
+    favourites: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Cocktail"
+        }],
     myCocktails: [
         {
             type: mongoose.Schema.Types.ObjectId,

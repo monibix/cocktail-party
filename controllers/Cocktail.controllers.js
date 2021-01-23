@@ -128,6 +128,25 @@ const updateCocktail = async (req, res) => {
     }
 }
 
+const getFavourites = async (req,res)  => {
+    try{
+        const _id = req.session.currentUser;
+        const { favourites } = await User.findById(_id)
+        const cocktailsList = await Cocktail.find({});
+        console.log(cocktailsList);
+        const cocktails = cocktailsList.map(cocktail => {
+          const isFavourite = favourites.includes(cocktail._id)
+          return {
+              ...cocktail,
+              isFavourite
+          }
+      })
+        res.render("",{cocktails})
+    }catch(err){
+        console.log('There is an error in getFavourites', error)
+    }
+};
+
 module.exports = {
     getCocktails,
     getCocktailDetail,

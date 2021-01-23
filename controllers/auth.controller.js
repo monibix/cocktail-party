@@ -10,13 +10,25 @@ const signupView = async (req,res) => {
     }
 }
 
+function userCheck() {
+    const usersList = await User.find({});
+    console.log(usersList);
+    const users = usersList.map(user => {
+        const existsAlready = users.includes(user._id)
+        return {
+            ...cocktail,
+            isFavourite
+        }
+    })
+}
+
 const newUser = async (req, res) => {
     try {
         const { email, password } = req.body;
         const randomString = await bcrypt.genSalt(saltRounds)
         const hashedPassword = await bcrypt.hash(password, randomString)
         const newUser = await User.create({ email, password: hashedPassword })
-        console.log(req.session)
+        console.log("this is the req.session object:",req.session)
         req.session.currentUser = newUser._id;
         res.redirect('/')
         console.log('NEW USER:', newUser)
@@ -93,7 +105,22 @@ const logInCheckEmpieza = (req, res, next) => {
 }
 
 
-
+const favouritesView = async (req, res) => {
+    try {
+        const userFavs = await User.findById(req.session.currentUser._id).populate("favourites")
+        res.render("user-favourites", {userFavs});
+    } catch (error) {
+        console.log('There is an error in favouritesView', error)
+    }
+    
+}
+  
+const updateFavourites = async (req, res) => {
+   const { id } = req.params;
+   const updatedUser = await User.findByIdAndUpdate({_id:req.session.currentUser._id},{ $push : {"favourites" :  id  }})
+   console.log("Favourites: ",updatedUser);
+   res.redirect("/list")
+}
 
 
 const userProfileView = async (req, res) => {
@@ -102,8 +129,6 @@ const userProfileView = async (req, res) => {
         
         const userInfo = await User.findById(id).populate('myCocktails')
         console.log("userinfo", userInfo)
-
-
 
         res.render('user-profile', userInfo)
         
@@ -145,4 +170,6 @@ module.exports = {
     logInCheckEmpieza, 
     userProfileView, //muestra user-profile-view con id usuario
     updateUserProfile, //actualiza info usuario
+    favouritesView,
+    updateFavourites
 }
