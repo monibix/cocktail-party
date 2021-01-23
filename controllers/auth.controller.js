@@ -10,12 +10,12 @@ const signupView = async (req,res) => {
     }
 }
 
-function userCheck() {
+const userCheck = async (req, res) => {
     const { email } = req.body;
     const usersList = await User.find({});
     console.log("This is the userlist",usersList);
     const users = usersList.map(user => {
-        const existsAlready = users.includes(user._id)
+    const existsAlready = users.includes(user._id)
         return {
             ...cocktail,
             isFavourite
