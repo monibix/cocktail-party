@@ -46,6 +46,7 @@ body {
 
 #home .destacados-cocktails img {
   width: 200px;
+  border-radius: 50%;
 }
 
 #home .destacados-cocktails p, #home .novedades-cocktails p, #home .icon p {
@@ -239,14 +240,37 @@ body {
   transition-duration: 0.4s;
 }
 
+@media (min-width: 1000px) {
+  #cocktail-detail .cocktail-detail-card {
+    margin: 20px 20vw;
+  }
+}
+
 /*EDIT-COCKTAIL.HBS (PARTIAL)*/
 .form {
   background-color: #222831;
   color: #fff;
   font-family: 'Raleway', sans-serif;
-  padding: 1.5rem;
   display: flex;
   flex-direction: column;
+}
+
+.form .create-edit-title {
+  padding-top: 1rem;
+  text-align: center;
+  color: #EB596E;
+}
+
+.form .update-edit-form {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 20px 10px 20px;
+  background-color: #2b323b;
+  border-radius: 10px;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
 }
 
 .form .ingredients-measures {
@@ -287,11 +311,27 @@ body {
   transition-duration: 0.4s;
 }
 
+@media (min-width: 1000px) {
+  .form .update-edit-form {
+    margin: 0 20vw;
+  }
+  .form .input {
+    width: 40vw;
+  }
+}
+
 /*USER-PROFILE*/
 #user-profile {
   background-color: #222831;
   color: #fff;
   font-family: 'Raleway', sans-serif;
+  padding-bottom: 1.5rem;
+}
+
+#user-profile .user-profile-title {
+  padding-top: 1rem;
+  text-align: center;
+  color: #EB596E;
 }
 
 #user-profile .user-card {
@@ -331,6 +371,11 @@ body {
   text-align: center;
 }
 
+#user-profile .address-title-container {
+  width: 12rem;
+  padding: 0px 10px;
+}
+
 #user-profile .buttons-container {
   margin: 30px;
 }
@@ -356,14 +401,22 @@ body {
   transition-duration: 0.4s;
 }
 
+@media (min-width: 1000px) {
+  #user-profile .user-card {
+    margin: 20px 20vw;
+  }
+}
+
 /*USER PROFILE FORM*/
-.user-profile-form {
+#user-profile-form {
   background-color: #222831;
   color: #fff;
   font-family: 'Raleway', sans-serif;
+  display: none;
+  /*NO SE APLICA ESTILO EN MY COCKTAILS CREATIONS*/
 }
 
-.user-profile-form .user-profile-form-card {
+#user-profile-form .user-profile-form-card {
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -375,7 +428,16 @@ body {
   box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
 }
 
-.user-profile-form button {
+#user-profile-form .user-profile-form-card .input {
+  background-color: #f8f1f1;
+  margin-bottom: 1.5rem;
+  width: 70vw;
+  align-self: center;
+  border-radius: 7px;
+  padding: 0.5rem 0.5rem;
+}
+
+#user-profile-form button {
   align-self: center;
   text-decoration: none;
   background-color: #EB596E;
@@ -388,9 +450,31 @@ body {
   font-weight: 600;
 }
 
-.user-profile-form button:hover {
+#user-profile-form button:hover {
   text-decoration: none;
   background-color: white;
   color: #EB596E;
   transition-duration: 0.4s;
+}
+
+#user-profile-form .my-cocktails-container {
+  display: flex;
+  flex-direction: column-reverse;
+  border: 2px solid red;
+}
+
+#user-profile-form #my-cocktail-images {
+  width: 200px;
+  border-radius: 50%;
+  border: 2px solid yellow;
+}
+
+@media (min-width: 1000px) {
+  #user-profile-form .user-profile-form-card {
+    margin: 20px 20vw;
+    margin-top: 20px;
+  }
+  #user-profile-form .user-profile-form-card .input {
+    width: 30vw;
+  }
 }

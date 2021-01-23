@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router();
+const fileParser = require('../bin/cloudinary.config')
 
 const {
     signupView,
@@ -29,7 +30,7 @@ router
     .get('/user-favourites/:id', favouritesView)
     .get('/user-profile/:id', logInCheck, userProfileView)
 
-    .post('/user-profile/:id', logInCheck, updateUserProfile)
+    .post('/user-profile/:id', logInCheck, fileParser.single("userImage"), updateUserProfile)
     
 module.exports = router;
 

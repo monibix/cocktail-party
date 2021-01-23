@@ -140,12 +140,12 @@ const userProfileView = async (req, res) => {
 const updateUserProfile = async (req, res) => {
     try {
         const { id } = req.params
-        const imageUrl = req.file && req.file.path
+        const userImage = req.file && req.file.path
         console.log("user profile:",req.body)
-        console.log("IMAGE URL", imageUrl)
+        console.log("IMAGE URL", userImage)
         const updatedUser = {
             ...req.body,
-            userImage: imageUrl
+            userImage
         }
         console.log("UPDATEDUSER", updatedUser)
         await User.findByIdAndUpdate(id, updatedUser)

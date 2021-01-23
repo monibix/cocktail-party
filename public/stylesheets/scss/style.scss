@@ -38,6 +38,7 @@ body { //no funciona
     }
     .destacados-cocktails img {
         width: 200px;
+        border-radius: 50%;
     }
     .destacados-cocktails p, .novedades-cocktails p, .icon p {
         text-align: center;
@@ -156,17 +157,25 @@ body { //no funciona
     .cocktail-buttons button:hover {
         @include button-hover
     }
+
+    @media (min-width:1000px) {
+        .cocktail-detail-card {
+            @include media-query-card;
+        }
+    }
 }
 
 /*EDIT-COCKTAIL.HBS (PARTIAL)*/
 .form {
     @include default-settings;
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    // .form-card{
-    //     @include card; retocar
-    // }
+        display: flex;
+        flex-direction: column;
+    .create-edit-title {
+        @include title;
+    }
+    .update-edit-form{
+        @include card;
+    }
     .ingredients-measures {
         display: flex;
         flex-direction: column;
@@ -188,11 +197,24 @@ body { //no funciona
     .form button:hover {
         @include button-hover
     }
+
+    @media (min-width: 1000px) {
+        .update-edit-form {
+            margin: 0 20vw;
+        }
+        .input {
+            width: 40vw;
+        }
+    }
 }
 
 /*USER-PROFILE*/
 #user-profile{
     @include default-settings;
+    padding-bottom: 1.5rem;
+    .user-profile-title {
+        @include title
+    }
     .user-card {
         @include card;
     }
@@ -217,6 +239,10 @@ body { //no funciona
         align-self: center;
         text-align: center;
     }
+    .address-title-container {
+        width: 12rem;
+        padding: 0px 10px;
+    }
 
     .buttons-container {
         margin: 30px;
@@ -229,18 +255,57 @@ body { //no funciona
         @include button-hover
     }
 
+
+    @media (min-width: 1000px) {
+        .user-card {
+            @include media-query-card;
+        }
+    }
+
 }
 
 /*USER PROFILE FORM*/
-.user-profile-form{
+#user-profile-form{
     @include default-settings;
+    display: none;
     .user-profile-form-card {
         @include card;
+        .input {
+            background-color: #f8f1f1;
+            margin-bottom: 1.5rem;
+            width: 70vw;
+            align-self: center;
+            border-radius: 7px;
+            padding: 0.5rem 0.5rem;
+        }
     }
     button {
         @include button;
     }
     button:hover{
         @include button-hover;
+    }
+
+    /*NO SE APLICA ESTILO EN MY COCKTAILS CREATIONS*/
+    .my-cocktails-container {
+        display: flex;
+        flex-direction: column-reverse;
+        border: 2px solid red;
+    }
+    #my-cocktail-images {
+        width: 200px;
+        border-radius: 50%;
+        border: 2px solid yellow;
+    }
+
+
+    @media (min-width: 1000px) {
+        .user-profile-form-card {
+            @include media-query-card;
+            margin-top: 20px;
+            .input {
+                width: 30vw;
+            }
+        }
     }
 }
