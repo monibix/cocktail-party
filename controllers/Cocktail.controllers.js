@@ -14,11 +14,27 @@ const getCocktails = async (req, res) => {
 
 const getCocktailDetail = async (req, res) => {
     try {
-        const _id = req.session.currentUser
+        const userID = req.session.currentUser;
         const { id } = req.params
+
+        const cocktailDetails = await Cocktail.findById(id);
+        const user = await User.findById(userID);
+        if (user) {
+            const checkCocktail = user.myCocktails.includes(id)
+            console.log("CHECKCOCT",checkCocktail)
+            console.log('USER!!!!', user)
+            console.log('show me now the cocktail cocktailDetails!!!! ', cocktailDetails)
+            res.render('cocktail-detail', {cocktailDetails, checkCocktail})
+        } else {
+            console.log('USER!!!!', user)
+            console.log('show me now the cocktail cocktailDetails!!!! ', cocktailDetails)
+            res.render('cocktail-detail', cocktailDetails)
+        }
+
         const details = await Cocktail.findById(id).lean();
         console.log('show me now the cocktail details!!!! ', details)
         res.render('cocktail-detail', {...details, id:details._id , _id})
+
     } catch (error) {
         console.log('There is an error in the route getCocktailDetail', error)
     }
@@ -111,15 +127,26 @@ const updateCocktail = async (req, res) => {
         const { name, shortDescription, category, instructions } = req.body
         const ingredients = formatIngredients(req.body)
         const measures = formatMeasures(req.body)
-        const imageUrl = req.file && req.file.path
-        console.log("IMAGEN:",imageUrl)
-        const newObj = {name: name, 
-                        shortDescription: shortDescription, 
-                        category: category,
-                        instructions: instructions, 
-                        cocktailImage: imageUrl, 
-                        ingredients: ingredients, 
-                        measures: measures
+        const imageUrl = req.file && req.file.path //si req.file no es undefined (si lo es queda como undefined), buscar req.file.path
+        let newObj = {}
+        if (imageUrl) {
+            newObj = {
+                    name: name,
+                    shortDescription: shortDescription,
+                    category: category,
+                    instructions: instructions,
+                    cocktailImage: imageUrl,
+                    ingredients: ingredients,
+                    measures: measures
+            }
+        } else {
+            newObj = {name: name, 
+                shortDescription: shortDescription, 
+                category: category,
+                instructions: instructions, 
+                ingredients: ingredients, 
+                measures: measures
+                }
         }
         console.log("NEWOBJECT", newObj)
         const cocktail = await Cocktail.findByIdAndUpdate(id, newObj, {new:true})

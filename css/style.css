@@ -1,0 +1,486 @@
+body {
+  background-color: #222831;
+  color: #fff;
+}
+
+.footer {
+  background-color: black;
+  font-size: 0.75rem;
+  color: #c1c1c1;
+  text-align: center;
+}
+
+/*INDEX.HBS*/
+#home {
+  background-color: #222831;
+  color: #fff;
+  /*Section home-image*/
+  /*Section destacados + novedades*/
+  /*Section comparte*/
+  /*Button*/
+}
+
+#home .home-image img {
+  width: 97vw;
+}
+
+#home .destacados, #home .novedades, #home .comparte {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+#home .destacados-title, #home .novedades-title, #home .comparte-title {
+  text-align: center;
+}
+
+#home .destacados-title p, #home .novedades-title p, #home .comparte-title p {
+  font-style: italic;
+}
+
+#home .destacados-cocktails, #home .comparte-icons {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+#home .destacados-cocktails img {
+  width: 200px;
+  border-radius: 50%;
+}
+
+#home .destacados-cocktails p, #home .novedades-cocktails p, #home .icon p {
+  text-align: center;
+}
+
+#home .icon {
+  width: 25vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 82px;
+}
+
+#home .icon p {
+  font-size: 0.8rem;
+  margin: 10px 0px;
+  width: 20vw;
+}
+
+#home .icon img {
+  width: 20vh;
+}
+
+#home .button {
+  margin: 20px auto 80px;
+}
+
+#home .button a {
+  align-self: center;
+  text-decoration: none;
+  background-color: #EB596E;
+  padding: 10px 14px;
+  color: white;
+  text-align: center;
+  border-radius: 25px;
+  margin: 20px 0px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+#home .button:hover a {
+  text-decoration: none;
+  background-color: white;
+  color: #EB596E;
+  transition-duration: 0.4s;
+}
+
+/*COCKTAILS.HBS*/
+#all-cocktails {
+  background-color: #222831;
+  color: #fff;
+  font-family: 'Raleway', sans-serif;
+}
+
+#all-cocktails .cocktail-card {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 20px 10px 20px;
+  background-color: #2b323b;
+  border-radius: 10px;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+}
+
+#all-cocktails .title {
+  color: #EB596E;
+  margin: 10px 10px;
+  text-align: center;
+  /*border-bottom: #EB596E 2px solid;*/
+}
+
+#all-cocktails .cocktail-title {
+  font-size: 28px;
+  font-weight: 900;
+  text-align: center;
+  margin: 30px 0px 0px 0px;
+  /*text-decoration: underline;*/
+}
+
+#all-cocktails .cocktails-view-images {
+  align-self: center;
+  max-width: 80%;
+  border-radius: 10em;
+  margin: 30px;
+}
+
+#all-cocktails .short-description {
+  font-size: 14px;
+  text-align: center;
+}
+
+#all-cocktails .cocktail-link {
+  align-self: center;
+  text-decoration: none;
+  background-color: #EB596E;
+  padding: 10px 14px;
+  color: white;
+  text-align: center;
+  border-radius: 25px;
+  margin: 20px 0px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+#all-cocktails .cocktail-link:hover {
+  text-decoration: none;
+  background-color: white;
+  color: #EB596E;
+  transition-duration: 0.4s;
+}
+
+/*COCKTAIL-DETAIL.HBS*/
+#cocktail-detail {
+  background-color: #222831;
+  color: #fff;
+  font-family: 'Raleway', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+#cocktail-detail .cocktail-detail-card {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 20px 10px 20px;
+  background-color: #2b323b;
+  border-radius: 10px;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+}
+
+#cocktail-detail .cocktail-image-container {
+  align-self: center;
+}
+
+#cocktail-detail .cocktail-image {
+  width: 90vw;
+  border-radius: 50%;
+  padding: 0px 20px;
+}
+
+#cocktail-detail .right-card {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5rem;
+  padding: 0px 10px;
+}
+
+#cocktail-detail .cocktail-title {
+  font-size: 2.25rem;
+  font-weight: 900;
+  text-align: center;
+  margin: 30px 0px;
+}
+
+#cocktail-detail .cocktail-description h4 {
+  font-weight: 900;
+}
+
+#cocktail-detail .ingredients-measures-list {
+  display: flex;
+  justify-content: space-around;
+}
+
+#cocktail-detail .cocktail-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+#cocktail-detail .cocktail-buttons button {
+  align-self: center;
+  text-decoration: none;
+  background-color: #EB596E;
+  padding: 10px 14px;
+  color: white;
+  text-align: center;
+  border-radius: 25px;
+  margin: 20px 0px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+#cocktail-detail .cocktail-buttons button:hover {
+  text-decoration: none;
+  background-color: white;
+  color: #EB596E;
+  transition-duration: 0.4s;
+}
+
+@media (min-width: 1000px) {
+  #cocktail-detail .cocktail-detail-card {
+    margin: 20px 20vw;
+  }
+}
+
+/*EDIT-COCKTAIL.HBS (PARTIAL)*/
+.form {
+  background-color: #222831;
+  color: #fff;
+  font-family: 'Raleway', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.form .create-edit-title {
+  padding-top: 1rem;
+  text-align: center;
+  color: #EB596E;
+}
+
+.form .update-edit-form {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 20px 10px 20px;
+  background-color: #2b323b;
+  border-radius: 10px;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+}
+
+.form .ingredients-measures {
+  display: flex;
+  flex-direction: column;
+}
+
+.form .label {
+  text-align: center;
+}
+
+.form .input {
+  background-color: #f8f1f1;
+  margin-bottom: 1.5rem;
+  width: 70vw;
+  align-self: center;
+  border-radius: 7px;
+  padding: 0.5rem 0.5rem;
+}
+
+.form .form button {
+  align-self: center;
+  text-decoration: none;
+  background-color: #EB596E;
+  padding: 10px 14px;
+  color: white;
+  text-align: center;
+  border-radius: 25px;
+  margin: 20px 0px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.form .form button:hover {
+  text-decoration: none;
+  background-color: white;
+  color: #EB596E;
+  transition-duration: 0.4s;
+}
+
+@media (min-width: 1000px) {
+  .form .update-edit-form {
+    margin: 0 20vw;
+  }
+  .form .input {
+    width: 40vw;
+  }
+}
+
+/*USER-PROFILE*/
+#user-profile {
+  background-color: #222831;
+  color: #fff;
+  font-family: 'Raleway', sans-serif;
+  padding-bottom: 1.5rem;
+}
+
+#user-profile .user-profile-title {
+  padding-top: 1rem;
+  text-align: center;
+  color: #EB596E;
+}
+
+#user-profile .user-card {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 20px 10px 20px;
+  background-color: #2b323b;
+  border-radius: 10px;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+}
+
+#user-profile .user-image {
+  width: 200px;
+  border-radius: 50%;
+}
+
+#user-profile .email, #user-profile .phone {
+  font-size: 0.8rem;
+  margin-top: -10px;
+}
+
+#user-profile .phone {
+  margin-top: -18px;
+}
+
+#user-profile .address-container {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+#user-profile .address-title-container, #user-profile .address-map-container {
+  width: 60%;
+  align-self: center;
+  text-align: center;
+}
+
+#user-profile .address-title-container {
+  width: 12rem;
+  padding: 0px 10px;
+}
+
+#user-profile .buttons-container {
+  margin: 30px;
+}
+
+#user-profile .button {
+  align-self: center;
+  text-decoration: none;
+  background-color: #EB596E;
+  padding: 10px 14px;
+  color: white;
+  text-align: center;
+  border-radius: 25px;
+  margin: 20px 0px;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0px 10px;
+}
+
+#user-profile .button:hover {
+  text-decoration: none;
+  background-color: white;
+  color: #EB596E;
+  transition-duration: 0.4s;
+}
+
+@media (min-width: 1000px) {
+  #user-profile .user-card {
+    margin: 20px 20vw;
+  }
+}
+
+/*USER PROFILE FORM*/
+#user-profile-form {
+  background-color: #222831;
+  color: #fff;
+  font-family: 'Raleway', sans-serif;
+  display: none;
+  /*NO SE APLICA ESTILO EN MY COCKTAILS CREATIONS*/
+}
+
+#user-profile-form .user-profile-form-card {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 20px 10px 20px;
+  background-color: #2b323b;
+  border-radius: 10px;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+}
+
+#user-profile-form .user-profile-form-card .input {
+  background-color: #f8f1f1;
+  margin-bottom: 1.5rem;
+  width: 70vw;
+  align-self: center;
+  border-radius: 7px;
+  padding: 0.5rem 0.5rem;
+}
+
+#user-profile-form button {
+  align-self: center;
+  text-decoration: none;
+  background-color: #EB596E;
+  padding: 10px 14px;
+  color: white;
+  text-align: center;
+  border-radius: 25px;
+  margin: 20px 0px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+#user-profile-form button:hover {
+  text-decoration: none;
+  background-color: white;
+  color: #EB596E;
+  transition-duration: 0.4s;
+}
+
+#user-profile-form .my-cocktails-container {
+  display: flex;
+  flex-direction: column-reverse;
+  border: 2px solid red;
+}
+
+#user-profile-form #my-cocktail-images {
+  width: 200px;
+  border-radius: 50%;
+  border: 2px solid yellow;
+}
+
+@media (min-width: 1000px) {
+  #user-profile-form .user-profile-form-card {
+    margin: 20px 20vw;
+    margin-top: 20px;
+  }
+  #user-profile-form .user-profile-form-card .input {
+    width: 30vw;
+  }
+}
+
+.form .error-message {
+  color: red;
+  justify-content: center;
+  text-align: center;
+}

@@ -11,6 +11,8 @@ const signupView = async (req,res) => {
     }
 }
 
+
+
 const userCheck = async (req, res, next) => {
     try {
         const { email } = req.body;
@@ -21,16 +23,24 @@ const userCheck = async (req, res, next) => {
     }
 }
 
+
 const newUser = async (req, res) => {
     try {
         const { email, password } = req.body;
-        const randomString = await bcrypt.genSalt(saltRounds)
-        const hashedPassword = await bcrypt.hash(password, randomString)
-        const newUser = await User.create({ email, password: hashedPassword })
-        console.log("this is the req.session object:",req.session)
-        req.session.currentUser = newUser._id;
-        res.redirect('/')
-        console.log('NEW USER:', newUser)
+        //Verificar si el email ya existe en la BD
+        const verifyEmail = await User.findOne({ email })
+        if (verifyEmail) {
+            return res.render('signup', {error: "Email already exists"})
+        } else {
+            const randomString = await bcrypt.genSalt(saltRounds)
+            const hashedPassword = await bcrypt.hash(password, randomString)
+            const newUser = await User.create({ email, password: hashedPassword })
+            console.log("this is the req.session object:",req.session)
+            req.session.currentUser = newUser._id;
+            res.redirect('/')
+            console.log('NEW USER:', newUser)
+        }
+        
     } catch (err) {
         console.log('There is an error:', err)
     }
@@ -57,11 +67,8 @@ const checkCredentials = (req, res, next) => {
 const login = async (req, res) => {
     try {
         const {email, password} = req.body
-        const { id } = req.params
-        const user = await User.findOne({ email })
+        const user = await User.findOne({ email }).lean()
         if (!user) {
-            console.log("ID undefined??", id)
-            console.log('User does not exist!!!!!!')
             return res.send('User does not exist')
         }
     
@@ -73,8 +80,16 @@ const login = async (req, res) => {
             return res.render('login', {error: "Password Incorrect"})
         }
         console.log('USER LOGGED IN IS:', user)
+
+        console.log('req.session.currentUser._id:', req.session.currentUser)
+        req.session.currentUser = user._id; //adjuntando una key al objeto session que se llama curerentUser y le pasamos user._id
+        console.log('req.session.currentUser._id2:', req.session.currentUser)
+        // res.render('user-profile', user)
+        res.redirect(`/auth/user-profile/${req.session.currentUser}`)
+
         req.session.currentUser = user._id;
         res.render('user-profile', user)
+      
     } catch (err) {
         console.log('Error Here!!!!!',err)
     }
@@ -141,9 +156,16 @@ const updateUserProfile = async (req, res) => {
         const userImage = req.file && req.file.path
         console.log("user profile:",req.body)
         console.log("IMAGE URL", userImage)
-        const updatedUser = {
-            ...req.body,
-            userImage
+        let updatedUser= {}
+        if (userImage) {
+            updatedUser = {
+                ...req.body,
+                userImage
+            }
+        } else {
+            updatedUser = {
+                ...req.body
+            }
         }
         console.log("UPDATEDUSER", updatedUser)
         await User.findByIdAndUpdate(id, updatedUser)

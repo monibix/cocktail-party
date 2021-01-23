@@ -1,20 +1,20 @@
 <div id="cocktail-detail">
     <div class="cocktail-detail-card">
-    <h1 class="cocktail-title">{{name}}</h1>
+    <h1 class="cocktail-title">{{cocktailDetails.name}}</h1>
     <div class="cocktail-image-container">
-        <img class="cocktail-image" src="{{cocktailImage}}" alt="{{name}}">
+        <img class="cocktail-image" src="{{cocktailDetails.cocktailImage}}" alt="{{cocktailDetails.name}}">
     </div>
 
     <div class="right-card">
 
     <div class="cocktail-description">
         
-        <p>{{shortDescription}}</p>
+        <p>{{cocktailDetails.shortDescription}}</p>
         <div class="ingredients-measures-list">
             <div class="ingredients-list">
                 <h4>Ingredients</h4>
                 <ul class="ingredients-list">
-                    {{#each ingredients}}
+                    {{#each cocktailDetails.ingredients}}
                     <li>{{this}}</li>
                     {{/each}}
                 </ul>
@@ -22,19 +22,19 @@
             <div class="measures-list">
                 <h4>Measures</h4>
                 <ul class="measures-list">
-                    {{#each measures}}
+                    {{#each cocktailDetails.measures}}
                     <li>{{this}}</li>
                     {{/each}}
                 </ul>
             </div>
         </div>
         <h4>Instructions</h4>
-        <p>{{instructions}}</p>
+        <p>{{cocktailDetails.instructions}}</p>
         <h4>Description</h4>
-        <p>{{longDescription}}</p>
+        <p>{{cocktailDetails.longDescription}}</p>
     </div>
 
-{{#if _id}}
+{{#if checkCocktail}}
     <div class="cocktail-buttons">
         <form action="/cocktails/{{id}}/delete" method='POST'>
             <button type="submit">Delete Cocktail</button>
@@ -44,5 +44,5 @@
         </form>
     </div>
 {{else }}
-<h2>funciona</h2>
+<h2>No es mi cóctel!!!</h2>
 {{/if}}
