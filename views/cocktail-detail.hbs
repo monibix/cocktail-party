@@ -36,13 +36,14 @@
 
 {{#if checkCocktail}}
     <div class="cocktail-buttons">
-        <form action="/cocktails/{{id}}/delete" method='POST'>
+        <form action="/cocktails/{{cocktailDetails.id}}/delete" method='POST'>
             <button type="submit">Delete Cocktail</button>
         </form>
-        <form action="/cocktails/{{id}}/edit">
+        <form action="/cocktails/{{cocktailDetails.id}}/edit">
             <button type="submit">Edit Cocktail</button>
         </form>
     </div>
+    <button>Add to Favourites</button>
 {{else }}
-<h2>No es mi cóctel!!!</h2>
+<button>Add to Favourites</button>
 {{/if}}

@@ -14,20 +14,20 @@ const getCocktails = async (req, res) => {
 
 const getCocktailDetail = async (req, res) => {
     try {
-        const userID = req.session.currentUser;
+        const _id = req.session.currentUser;
         const { id } = req.params
         const cocktailDetails = await Cocktail.findById(id);
-        const user = await User.findById(userID);
+        const user = await User.findById(_id);
         if (user) {
             const checkCocktail = user.myCocktails.includes(id)
             console.log("CHECKCOCT",checkCocktail)
             console.log('USER!!!!', user)
             console.log('show me now the cocktail cocktailDetails!!!! ', cocktailDetails)
-            res.render('cocktail-detail', {cocktailDetails, checkCocktail})
+            console.log("req.session.currentUser", req.session.currentUser)
+            console.log("USERID", _id)
+            res.render('cocktail-detail', {cocktailDetails, checkCocktail, _id}) // SI SE NOMBRA LA VARIABLE DE UNA FORMA DISTINTA A _ID NO FUNCIONA
         } else {
-            console.log('USER!!!!', user)
-            console.log('show me now the cocktail cocktailDetails!!!! ', cocktailDetails)
-            res.render('cocktail-detail', cocktailDetails)
+            res.render('cocktail-detail', {cocktailDetails, _id})
         }
     } catch (error) {
         console.log('There is an error in the route getCocktailDetail', error)
@@ -158,7 +158,7 @@ const getFavourites = async (req,res)  => {
         const _id = req.session.currentUser;
         const { favourites } = await User.findById(_id)
         const cocktailsList = await Cocktail.find({});
-        console.log("this is the cocktails list:",cocktailsList);
+        console.log("this is the cocktails list:", cocktailsList);
         const cocktails = cocktailsList.map(cocktail => {
         const isFavourite = favourites.includes(cocktail._id)
         return {
@@ -166,7 +166,7 @@ const getFavourites = async (req,res)  => {
               isFavourite
         }
         })
-        res.render("", {cocktails})
+        res.render("user-favourites", {cocktails})
     }catch(err){
         console.log('There is an error in getFavourites', error)
     }
