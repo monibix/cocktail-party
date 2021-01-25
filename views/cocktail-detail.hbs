@@ -33,6 +33,7 @@
         <h4>Description</h4>
         <p>{{cocktailDetails.longDescription}}</p>
     </div>
+</div>
 
 {{#if checkCocktail}}
     <div class="cocktail-buttons">
@@ -43,7 +44,11 @@
             <button type="submit">Edit Cocktail</button>
         </form>
     </div>
-    <button>Add to Favourites</button>
 {{else }}
-<button>Add to Favourites</button>
+<h2>Funciona !!!!</h2>
 {{/if}}
+
+{{#if _id}}
+    <a href="/cocktails/favourite-cocktails/{{cocktailDetails.id}}">Add to Favourites</a>
+{{/if}}
+

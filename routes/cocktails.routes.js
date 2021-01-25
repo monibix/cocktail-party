@@ -11,12 +11,14 @@ const {
     updateCocktail,
     deleteCocktail, 
     editView, 
+    addToFavourites
 } = require('../controllers/Cocktail.controllers')
 
 /* GET cocktails page */
 router
     .get('/', getCocktails)
     .get('/create-cocktail', logInCheck, createCocktailView)
+    .get('/favourite-cocktails/:id', addToFavourites)
     .get('/:id', getCocktailDetail)
     .post('/create-cocktail', fileParser.single("cocktail-image"), createCocktail)
     .post('/:id/delete', deleteCocktail)

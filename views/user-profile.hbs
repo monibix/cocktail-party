@@ -21,8 +21,13 @@
                 </div>
             </div>
 
-            <a href="/auth/user-favourites/{{_id}}">My favourite cocktails</a>
-
+            <h3>My Favourites</h3>
+            <div class="my-cocktails-container">
+                {{#each favourites}}
+                    <a href="/cocktails/{{_id}}"><img id="my-cocktail-images" src="{{cocktailImage}}" alt="New Cocktail" width="200px"></a>
+                    <p>{{name}}</p>
+                {{/each}}
+            </div>  
 
             <h3>My own Cocktails creations</h3>
             <div class="my-cocktails-container">
