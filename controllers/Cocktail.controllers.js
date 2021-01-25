@@ -16,6 +16,7 @@ const getCocktailDetail = async (req, res) => {
     try {
         const _id = req.session.currentUser;
         const { id } = req.params
+
         const cocktailDetails = await Cocktail.findById(id);
         const user = await User.findById(_id);
         if (user) {
@@ -29,6 +30,11 @@ const getCocktailDetail = async (req, res) => {
         } else {
             res.render('cocktail-detail', {cocktailDetails, _id})
         }
+
+        const details = await Cocktail.findById(id).lean();
+        console.log('show me now the cocktail details!!!! ', details)
+        res.render('cocktail-detail', {...details, id:details._id , _id})
+
     } catch (error) {
         console.log('There is an error in the route getCocktailDetail', error)
     }
@@ -143,10 +149,12 @@ const updateCocktail = async (req, res) => {
                 }
         }
         console.log("NEWOBJECT", newObj)
-        const cocktail = await Cocktail.findByIdAndUpdate(id, newObj)
+        const cocktail = await Cocktail.findByIdAndUpdate(id, newObj, {new:true})
 
+        -
         res.redirect(`/cocktails/${id}`)
-        //res.render('cocktail-detail', {_id})
+        // res.render('cocktail-detail', {...cocktail,  _id})
+        // res.redirect('/{{id}}/edit')
 
     } catch (error) {
         console.log('There is an error in the updateCocktail', error)

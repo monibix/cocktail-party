@@ -1,3 +1,4 @@
+require('dotenv').config()
 const User = require('../models/User.model')
 const bcrypt = require('bcryptjs')
 const saltRounds = 10;
@@ -9,6 +10,19 @@ const signupView = async (req,res) => {
         console.log('There is an error in the signup view!!', error)
     }
 }
+
+
+
+const userCheck = async (req, res, next) => {
+    try {
+        const { email } = req.body;
+        const usersList = await User.findOne({email});
+        res.render()
+    } catch (error) {
+        console.log('There is an error in userCheck!', error)
+    }
+}
+
 
 const newUser = async (req, res) => {
     try {
@@ -66,11 +80,16 @@ const login = async (req, res) => {
             return res.render('login', {error: "Password Incorrect"})
         }
         console.log('USER LOGGED IN IS:', user)
+
         console.log('req.session.currentUser._id:', req.session.currentUser)
         req.session.currentUser = user._id; //adjuntando una key al objeto session que se llama curerentUser y le pasamos user._id
         console.log('req.session.currentUser._id2:', req.session.currentUser)
         // res.render('user-profile', user)
         res.redirect(`/auth/user-profile/${req.session.currentUser}`)
+
+        req.session.currentUser = user._id;
+        res.render('user-profile', user)
+      
     } catch (err) {
         console.log('Error Here!!!!!',err)
     }
@@ -172,5 +191,6 @@ module.exports = {
     userProfileView, //muestra user-profile-view con id usuario
     updateUserProfile, //actualiza info usuario
     favouritesView,
-    updateFavourites
+    updateFavourites,
+    userCheck
 }
