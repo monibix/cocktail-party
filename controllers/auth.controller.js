@@ -13,15 +13,15 @@ const signupView = async (req,res) => {
 
 
 
-const userCheck = async (req, res, next) => {
-    try {
-        const { email } = req.body;
-        const usersList = await User.findOne({email});
-        res.render()
-    } catch (error) {
-        console.log('There is an error in userCheck!', error)
-    }
-}
+// const userCheck = async (req, res, next) => {
+//     try {
+//         const { email } = req.body;
+//         const usersList = await User.findOne({email});
+//         res.render()
+//     } catch (error) {
+//         console.log('There is an error in userCheck!', error)
+//     }
+// }
 
 
 const newUser = async (req, res) => {
@@ -177,6 +177,28 @@ const updateUserProfile = async (req, res) => {
     }
 }
 
+const userProfilePublicView = async (req, res) => { //repasar!!lleva a profile de usuario existente. //no se guarda sesion
+    try {                                            
+        const currentUserID = req.session.currentUser;
+        const userID = req.params //buscar el id del usuario q en su array de myCocktails contenga el id del cocktail en cuestion.
+        const userInfo = await User.findById(userID.id).populate('myCocktails').populate('favourites')
+        console.log("USERID", userID)
+        console.log("USERINFo", userInfo)
+        console.log("currentuserID", currentUserID)
+        res.render('user-profile-public', {userInfo, userID, currentUserID})
+    } catch (error) {
+        console.log("Error in userProfilePublicView", error)
+    }
+}
+
+const chatView = async (req, res) => {
+    try {
+        
+        res.render("chat")
+    } catch (error) {
+        console.log("Error in chatView", error)
+    }
+}
 
 
 module.exports = {
@@ -192,5 +214,7 @@ module.exports = {
     updateUserProfile, //actualiza info usuario
     favouritesView,
     updateFavourites,
-    userCheck
+    //userCheck, 
+    userProfilePublicView,
+    chatView
 }
