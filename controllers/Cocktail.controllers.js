@@ -25,7 +25,7 @@ const getCocktailDetail = async (req, res) => {
             console.log('USER!!!!', user)
             console.log('show me now the cocktail cocktailDetails!!!! ', cocktailDetails)
             console.log("req.session.currentUser", req.session.currentUser)
-            console.log("USERID", _id)
+            console.log("USERIDgetcocktaildetail", _id)
             res.render('cocktail-detail', {cocktailDetails, checkCocktail, _id}) // SI SE NOMBRA LA VARIABLE DE UNA FORMA DISTINTA A _ID NO FUNCIONA
         } else {
             res.render('cocktail-detail', {cocktailDetails, _id})

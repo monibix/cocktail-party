@@ -95,6 +95,15 @@ body {
   transition-duration: 0.4s;
 }
 
+@media (min-width: 1000px) {
+  #home .home-card {
+    padding: 50px 200px;
+  }
+  #home .carousel-item {
+    width: 70vw;
+  }
+}
+
 /*COCKTAILS.HBS*/
 #all-cocktails {
   background-color: #222831;
@@ -159,6 +168,15 @@ body {
   background-color: white;
   color: #EB596E;
   transition-duration: 0.4s;
+}
+
+@media (min-width: 1000px) {
+  #all-cocktails .cocktail-card {
+    margin: 20px 20vw;
+  }
+  #all-cocktails .cocktail-card .cocktails-view-images {
+    width: 30vw;
+  }
 }
 
 /*COCKTAIL-DETAIL.HBS*/
@@ -240,9 +258,29 @@ body {
   transition-duration: 0.4s;
 }
 
+#cocktail-detail .add-to-favs-container {
+  margin-bottom: 1.5rem;
+}
+
+#cocktail-detail #add-to-favs {
+  align-self: center;
+  text-decoration: none;
+  background-color: #EB596E;
+  padding: 10px 14px;
+  color: white;
+  text-align: center;
+  border-radius: 25px;
+  margin: 20px 0px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
 @media (min-width: 1000px) {
   #cocktail-detail .cocktail-detail-card {
     margin: 20px 20vw;
+  }
+  #cocktail-detail .cocktail-image {
+    width: 30vw;
   }
 }
 
@@ -476,5 +514,74 @@ body {
   }
   #user-profile-form .user-profile-form-card .input {
     width: 30vw;
+  }
+}
+
+.form .error-message {
+  color: red;
+  justify-content: center;
+  text-align: center;
+}
+
+/*USER PROFILE PUBLIC*/
+.chat-button {
+  align-self: center;
+  text-decoration: none;
+  background-color: #EB596E;
+  padding: 10px 14px;
+  color: white;
+  text-align: center;
+  border-radius: 25px;
+  margin: 20px 0px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.chat-button:hover {
+  text-decoration: none;
+  background-color: white;
+  color: #EB596E;
+  transition-duration: 0.4s;
+}
+
+/*CHAT*/
+.chat-container {
+  background-color: #222831;
+  color: #fff;
+  font-family: 'Raleway', sans-serif;
+  padding: 1.5rem 0;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+}
+
+.chat-container .chat-card-container {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 20px 10px 20px;
+  background-color: #2b323b;
+  border-radius: 10px;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+}
+
+.chat-container .chat-card-container h1 {
+  padding-top: 1rem;
+  text-align: center;
+  color: #EB596E;
+}
+
+.chat-container .chat-card-container img {
+  width: 80vw;
+}
+
+@media (min-width: 1000px) {
+  .chat-container .chat-card-container {
+    margin: 0 auto;
+  }
+  .chat-container .chat-card-container #chat-img {
+    width: 90vh;
   }
 }

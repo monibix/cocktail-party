@@ -72,6 +72,15 @@ body { //no funciona
         @include button-hover
     }
 
+    @media (min-width:1000px) {
+        .home-card {
+            padding: 50px 200px;
+        }
+        .carousel-item {
+            width: 70vw;
+        }
+    }
+
 }
 
 /*COCKTAILS.HBS*/
@@ -109,6 +118,15 @@ body { //no funciona
     .cocktail-link:hover{
         @include button-hover
     }
+
+    @media (min-width:1000px) {
+        .cocktail-card {
+            @include media-query-card;
+            .cocktails-view-images {
+                width: 30vw;
+            }
+        }
+    }
 }
 
 /*COCKTAIL-DETAIL.HBS*/
@@ -121,7 +139,6 @@ body { //no funciona
     }
     .cocktail-image-container {
         align-self: center;
-        
     }
     .cocktail-image {
         width: 90vw;
@@ -157,10 +174,19 @@ body { //no funciona
     .cocktail-buttons button:hover {
         @include button-hover
     }
+    .add-to-favs-container {
+        margin-bottom: 1.5rem; 
+    }
+    #add-to-favs {
+        @include button;
+    }
 
     @media (min-width:1000px) {
         .cocktail-detail-card {
             @include media-query-card;
+        }
+        .cocktail-image {
+            width: 30vw;
         }
     }
 }
@@ -315,5 +341,41 @@ body { //no funciona
     color: red;
     justify-content: center;
     text-align: center;
+    }
+}
+
+/*USER PROFILE PUBLIC*/
+.chat-button {
+    @include button
+}
+.chat-button:hover {
+    @include button-hover
+}
+
+/*CHAT*/
+.chat-container {
+    @include default-settings;
+    padding: 1.5rem 0;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    .chat-card-container {
+        @include card;
+        
+        h1 {
+            @include title
+        }
+        img {
+            width: 80vw;
+        }
+    }
+
+    @media (min-width: 1000px) {
+        .chat-card-container {
+            margin: 0 auto;    
+                #chat-img {
+                    width: 90vh;
+                }
+        }
     }
 }

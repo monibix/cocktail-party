@@ -8,7 +8,7 @@
     <div class="right-card">
 
     <div class="cocktail-description">
-        
+        <h4>Description</h4>
         <p>{{cocktailDetails.shortDescription}}</p>
         <div class="ingredients-measures-list">
             <div class="ingredients-list">
@@ -45,10 +45,13 @@
         </form>
     </div>
 {{else }}
-<h2>Funciona !!!!</h2>
+{{!-- <h2>Funciona !!!!</h2> --}}
+<a id="add-to-favs" href="/auth/user-profile-public/{{_id}}">View profile Creator<a>
 {{/if}}
 
-{{#if _id}}
-    <a href="/cocktails/favourite-cocktails/{{cocktailDetails.id}}">Add to Favourites</a>
+<div class="add-to-favs-container">
+    {{#if _id}}
+        <a id="add-to-favs" href="/cocktails/favourite-cocktails/{{cocktailDetails.id}}">Add to Favourites</a>
 {{/if}}
+</div>
 

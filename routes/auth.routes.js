@@ -15,13 +15,15 @@ const {
     updateUserProfile, 
     favouritesView,
     updateFavourites,
-    userCheck
+    //userCheck, 
+    userProfilePublicView, 
+    chatView
 } = require('../controllers/auth.controller')
 
 router
     .get('/signup', signupView)
     .get('/login', loginView)
-    .post('/signup', checkCredentials, userCheck, newUser)
+    .post('/signup', checkCredentials, newUser) //userCheck crash app
     .post('/login', checkCredentials, login)
     .post('/logout', logout)
     //.get('/user-profile', login)
@@ -29,6 +31,8 @@ router
 
     .get('/user-favourites', favouritesView)
     .get('/user-profile/:id', logInCheck, userProfileView)
+    .get('/user-profile-public/:id', userProfilePublicView)
+    .get('/chat', chatView)
 
     .post('/user-profile/:id', logInCheck, fileParser.single("userImage"), updateUserProfile)
     
