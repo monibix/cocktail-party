@@ -32,50 +32,31 @@
         <h3>DESTACADOS</h3>
         <p>Los cocktails más populares del momento</p>
     </div>
-    <div class="destacados-cocktails">{{!-- poner enlaces a cocktail-detail y lógica --}}
-        {{!-- {{#if cocktailDetails}} --}}
+    <div class="destacados-cocktails">
+    {{#each filteredCocktails}}
+        <div class="destacados-cocktails">
         <div class="cocktail-1">
-            <a href="/cocktails/{{id}}"><img src="/images/margarita.jpg" alt="Margarita"></a>
-            <p>Margarita</p>
+            <a href="/cocktails/{{_id}}"><img src="{{cocktailImage}}" alt="{{name}}"></a>
+            <p>{{name}}</p>
         </div>
-        <div class="cocktail-2">
-            <img src="/images/mojito.jpg" alt="Mojito">
-            <p>Mojito</p>
-        </div>
-        <div class="cocktail-3">
-            <img src="/images/caipirinha.jpg" alt="Caipirinha">
-            <p>Caipirinha</p>
-        </div>
-        <div class="cocktail-4">
-            <img src="/images/pina-colada.jpg" alt="Piña Colada">
-            <p>Piña Colada</p>
-        </div>
-        
+    {{/each }}
     </div>
 </section>
 
-<section class="novedades">
+
+<section class="destacados">
     <div class="destacados-title">
         <h3>NOVEDADES</h3>
         <p>Descubre las últimas creaciones de los usuarios</p>
     </div>
     <div class="destacados-cocktails">
+    {{#each lastCocktails}}
+        <div class="novedades-cocktails">
         <div class="cocktail-1">
-            <img src="/images/banana-strawberry-shake.jpg" alt="Banana Strawberry Shake">
-            <p>Banana Strawberry Shake</p>
+            <a href="/cocktails/{{_id}}"><img src="{{cocktailImage}}" alt="{{name}}"></a>
+            <p>{{name}}</p>
         </div>
-        <div class="cocktail-2">
-            <img src="/images/hot-chocolate-to-die-for.jpg" alt="Hot Chocolate to Die for">
-            <p>Hot Chocolate to Die for</p>
-        </div>
-        <div class="cocktail-3">
-            <img src="/images/mimosa.jpg" alt="Mimosa">
-            <p>Mimosa</p>
-        </div>
-        <div class="cocktail-4">
-            <img src="/images/moscow-mule.jpg" alt="Moscow Mule">
-            <p>Moscow Mule</p>
-        </div>
+    {{/each }}
     </div>
 </section>
 
@@ -103,13 +84,7 @@
         </div>
     </div>
     <div class="button">
-        {{!-- <form action="{{ruta}}" method="GET">
-            <button>Empieza ahora</button>
-        </form> --}}
         <a href="/auth/signup">Empieza ahora</a>
-
-
-        
     </div>
 </section>
 

@@ -13,8 +13,8 @@ const {
     logInCheckEmpieza, 
     userProfileView,
     updateUserProfile, 
-    favouritesView,
-    updateFavourites,
+    //favouritesView,
+    //updateFavourites,
     //userCheck, 
     userProfilePublicView, 
     chatView
@@ -29,7 +29,7 @@ router
     //.get('/user-profile', login)
     //.get('/', logInCheckEmpieza)
 
-    .get('/user-favourites', favouritesView)
+    //.get('/user-favourites', favouritesView)
     .get('/user-profile/:id', logInCheck, userProfileView)
     .get('/user-profile-public/:id', userProfilePublicView)
     .get('/chat', chatView)

@@ -19,17 +19,16 @@ const getCocktailDetail = async (req, res) => {
 
         const cocktailDetails = await Cocktail.findById(id);
         const user = await User.findById(_id);
+        let checkCocktail
         if (user) {
-            const checkCocktail = user.myCocktails.includes(id)
-            console.log("CHECKCOCT",checkCocktail)
-            console.log('USER!!!!', user)
-            console.log('show me now the cocktail cocktailDetails!!!! ', cocktailDetails)
-            console.log("req.session.currentUser", req.session.currentUser)
-            console.log("USERIDgetcocktaildetail", _id)
-            res.render('cocktail-detail', {cocktailDetails, checkCocktail, _id}) // SI SE NOMBRA LA VARIABLE DE UNA FORMA DISTINTA A _ID NO FUNCIONA
+            checkCocktail = user.myCocktails.includes(id)
         } else {
-            res.render('cocktail-detail', {cocktailDetails, _id})
+            checkCocktail = undefined
         }
+
+        let isFavourite = user.favourites.includes(id)
+
+        res.render('cocktail-detail', {cocktailDetails, checkCocktail, _id, isFavourite}) // SI SE NOMBRA LA VARIABLE DE UNA FORMA DISTINTA A _ID NO FUNCIONA
     } catch (error) {
         console.log('There is an error in the route getCocktailDetail', error)
     }
@@ -63,7 +62,7 @@ const createCocktail = async (req, res) => {
         const ingredients = formatIngredients(req.body)
         const measures = formatMeasures(req.body)
         const cocktailImage = req.file.path
-        const newRecipe = await Cocktail.create({name, shortDescription, longDescription, category, instructions, cocktailImage, ingredients, measures})
+        const newRecipe = await Cocktail.create({name, shortDescription, longDescription, category, instructions, cocktailImage, ingredients, measures, cocktailOwner: _id})
         
         const userCreateCocktail = await User.findByIdAndUpdate(_id, {$push:{myCocktails:newRecipe._id}}, {new:true})
         console.log("USERCREATECOCKTAIL", userCreateCocktail)
@@ -156,10 +155,20 @@ const addToFavourites = async (req, res) => {
     try {
         const { id } = req.params
         const _id = req.session.currentUser
-        const cocktail = await Cocktail.findById(id).lean()
-        console.log("COCKTAIL", cocktail)
+        //const cocktail = await Cocktail.findById(id).lean()
+        //console.log("COCKTAIL", cocktail)
         const user = await User.findById(_id)
-        const addFavouriteCocktail = await User.findByIdAndUpdate(_id, { $push: { favourites: cocktail._id } }, { new: true })
+        let isFavourite = user.favourites.includes(id)
+        let addFavouriteCocktail
+        if (isFavourite) {
+            addFavouriteCocktail = await User.findByIdAndUpdate(_id, { $pull: { favourites: id } }, { new: true })
+        }
+        else {
+            addFavouriteCocktail = await User.findByIdAndUpdate(_id, { $push: { favourites: id } }, { new: true })
+        }
+
+
+
         console.log("USER WITH FAVOURITES", addFavouriteCocktail)
         res.redirect(`/cocktails/${id}`)
     } catch (error) {

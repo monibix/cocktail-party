@@ -1,6 +1,7 @@
 require('dotenv').config()
 const User = require('../models/User.model')
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs');
+const { find, findByIdAndUpdate } = require('../models/User.model');
 const saltRounds = 10;
 
 const signupView = async (req,res) => {
@@ -118,32 +119,31 @@ const logInCheckEmpieza = (req, res, next) => {
     }
 }
 
+// const favouritesView = async (req, res) => {
+//     try {
+//         const userFavs = await User.findById(req.session.currentUser._id).populate("favourites")
+//         res.render("user-favourites", {userFavs});
+//     } catch (error) {
+//         console.log('There is an error in favouritesView', error)
+//     }
+// }
 
-const favouritesView = async (req, res) => {
-    try {
-        const userFavs = await User.findById(req.session.currentUser._id).populate("favourites")
-        res.render("user-favourites", {userFavs});
-    } catch (error) {
-        console.log('There is an error in favouritesView', error)
-    }
-}
-  
-const updateFavourites = async (req, res) => {
-   const { id } = req.params;
-   const updatedUser = await User.findByIdAndUpdate({_id:req.session.currentUser._id},{ $push : {"favourites" :  id  }})
-   console.log("Favourites: ",updatedUser);
-   res.redirect("/list")
-}
+// const updateFavourites = async (req, res) => {
+//    const { id } = req.params;
+//    const updatedUser = await User.findByIdAndUpdate({_id:req.session.currentUser._id},{ $push : {"favourites" :  id  }})
+//    console.log("Favourites: ",updatedUser);
+//    res.redirect("/list")
+// }
 
 
 const userProfileView = async (req, res) => {
     try {
         const { id } = req.params
-        
-        const userInfo = await User.findById(id).populate('myCocktails').populate('favourites')
+        const apikey = process.env.API_KEY
+        const userInfo = await User.findById(id).populate('myCocktails').populate('favourites').lean()
         console.log("userinfo", userInfo)
 
-        res.render('user-profile', userInfo)
+        res.render('user-profile', {...userInfo, apikey: apikey})
         
     } catch (error) {
         res.send('userprofileview error')
@@ -180,12 +180,43 @@ const updateUserProfile = async (req, res) => {
 const userProfilePublicView = async (req, res) => { //repasar!!lleva a profile de usuario existente. //no se guarda sesion
     try {                                            
         const currentUserID = req.session.currentUser;
-        const userID = req.params //buscar el id del usuario q en su array de myCocktails contenga el id del cocktail en cuestion.
-        const userInfo = await User.findById(userID.id).populate('myCocktails').populate('favourites')
+        //await Cocktail.findById(cocktailID)
+
+        const { id:userID } = req.params //recoge id cocktail de la ruta
+        const userList = await User.find() //buscar el id del usuario q en su array de myCocktails contenga el id del cocktail en cuestion.
+        console.log("userlist", userList)
+        //console.log("cocktailID", cocktailID)
+
+        // userList.map(userOwner => {
+        //     const userOwns = userOwner.myCocktails.includes(cocktailID)
+        //     console.log("currentuserID", currentUserID)
+        //     console.log("userowns", userOwns)
+        //     console.log("userOwner.myCocktails", userOwner.myCocktails)
+        //     if (userOwns) {
+        //         const userOwnerID = userOwns._id
+        //         return userOwnerID
+        //     }
+        //     console.log("userownerid", userOwns._id)
+        // })
+        
+
+        const userInfo = await User.findById(userID).populate('myCocktails favourites')
+        const apikey = process.env.API_KEY
         console.log("USERID", userID)
         console.log("USERINFo", userInfo)
-        console.log("currentuserID", currentUserID)
-        res.render('user-profile-public', {userInfo, userID, currentUserID})
+        //console.log("currentuserID", currentUserID)
+        res.render('user-profile-public', {userID, userInfo, apikey})
+
+        // const cocktailsList = await Cocktail.find({});
+        // console.log("this is the cocktails list:", cocktailsList);
+        // const cocktails = cocktailsList.map(cocktail => {
+        // const isFavourite = favourites.includes(cocktail._id)
+        // return {
+        //       ...cocktail,
+        //       isFavourite
+        // }
+        // })
+
     } catch (error) {
         console.log("Error in userProfilePublicView", error)
     }
@@ -212,8 +243,8 @@ module.exports = {
     logInCheckEmpieza, 
     userProfileView, //muestra user-profile-view con id usuario
     updateUserProfile, //actualiza info usuario
-    favouritesView,
-    updateFavourites,
+    //favouritesView,
+    //updateFavourites,
     //userCheck, 
     userProfilePublicView,
     chatView
