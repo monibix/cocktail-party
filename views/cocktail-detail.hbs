@@ -46,12 +46,18 @@
     </div>
 {{else }}
 {{!-- <h2>Funciona !!!!</h2> --}}
-<a id="add-to-favs" href="/auth/user-profile-public/{{_id}}">View profile Creator<a>
+    {{#if cocktailDetails.cocktailOwner}}
+        <a id="add-to-favs" href="/auth/user-profile-public/{{cocktailDetails.cocktailOwner}}">View profile Creator<a>
+    {{/if}}
 {{/if}}
 
 <div class="add-to-favs-container">
     {{#if _id}}
-        <a id="add-to-favs" href="/cocktails/favourite-cocktails/{{cocktailDetails.id}}">Add to Favourites</a>
+        {{#if isFavourite}}
+            <a id="add-to-favs" href="/cocktails/favourite-cocktails/{{cocktailDetails.id}}">Remove to Favourites</a>
+        {{else}}
+            <a id="add-to-favs" href="/cocktails/favourite-cocktails/{{cocktailDetails.id}}">Add to Favourites</a>
+        {{/if}}
 {{/if}}
 </div>
 

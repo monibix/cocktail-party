@@ -39,6 +39,11 @@ app.use(express.static(path.join(__dirname, '/public/')));
 // Configuracion hbs
 hbs.registerPartials(`${__dirname}/views/partials`)
 
+//Creando una variable local currentUser que contiene el id de la session
+app.use((req, res, next) => {
+  res.locals.currentUser = req.session.currentUser;
+  next();
+});
 
 const index = require('./routes/index.routes');
 app.use('/', index);

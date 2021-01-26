@@ -439,6 +439,11 @@ body {
   transition-duration: 0.4s;
 }
 
+#user-profile #my-cocktail-images {
+  width: 200px;
+  border-radius: 50%;
+}
+
 @media (min-width: 1000px) {
   #user-profile .user-card {
     margin: 20px 20vw;

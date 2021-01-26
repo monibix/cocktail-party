@@ -9,7 +9,12 @@ const cocktailSchema = new Schema({
     ingredients: [String], 
     measures: [String],
     instructions: [String],
-}, 
+    cocktailOwner: 
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    }, 
     {
         timestamps: { createdAt: true, updatedAt: true }
     }
