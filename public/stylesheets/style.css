@@ -10,6 +10,49 @@ body {
   text-align: center;
 }
 
+.nav {
+  background-color: #313945;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 5px 0px 10px 0px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.nav .nav-link {
+  color: white;
+}
+
+.nav .nav-link:hover {
+  color: #eb596e;
+  text-decoration: underline;
+}
+
+.nav .nav-item {
+  border: none;
+  text-decoration: none;
+  background-color: #313945;
+  color: white;
+  padding-top: 7px;
+}
+
+.nav #signup {
+  border: 2px white solid;
+  border-radius: 25px;
+  padding: 5px 10px 5px 10px;
+}
+
+.nav #signup:hover {
+  border: 2px #eb596e solid;
+  text-decoration: none;
+  border-radius: 25px;
+}
+
+.footer {
+  padding: 15px;
+  font-size: 15px;
+}
+
 /*INDEX.HBS*/
 #home {
   background-color: #222831;
@@ -51,6 +94,10 @@ body {
 
 #home .destacados-cocktails p, #home .novedades-cocktails p, #home .icon p {
   text-align: center;
+}
+
+#home .cocktail-name-home {
+  padding-top: 10px;
 }
 
 #home .icon {
@@ -109,6 +156,7 @@ body {
   background-color: #222831;
   color: #fff;
   font-family: 'Raleway', sans-serif;
+  padding-top: 20px;
 }
 
 #all-cocktails .cocktail-card {
@@ -117,16 +165,17 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 10px 20px 10px 20px;
+  margin: 10px 20px 0px 20px;
   background-color: #2b323b;
   border-radius: 10px;
   box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
 }
 
 #all-cocktails .title {
-  color: #EB596E;
-  margin: 10px 10px;
+  color: #eb596e;
+  margin: 0px 10px 0px 10px;
   text-align: center;
+  font-size: 25px;
   /*border-bottom: #EB596E 2px solid;*/
 }
 
@@ -135,6 +184,7 @@ body {
   font-weight: 900;
   text-align: center;
   margin: 30px 0px 0px 0px;
+  padding: 20px 0px 20px 0px;
   /*text-decoration: underline;*/
 }
 
@@ -146,8 +196,9 @@ body {
 }
 
 #all-cocktails .short-description {
-  font-size: 14px;
+  font-size: 16px;
   text-align: center;
+  padding: 0px 70px 0px 70px;
 }
 
 #all-cocktails .cocktail-link {
@@ -194,7 +245,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 10px 20px 10px 20px;
+  margin: 10px 20px 0px 20px;
   background-color: #2b323b;
   border-radius: 10px;
   box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
@@ -218,19 +269,27 @@ body {
 }
 
 #cocktail-detail .cocktail-title {
-  font-size: 2.25rem;
-  font-weight: 900;
+  color: white;
+  font-size: 2.2rem;
+  font-weight: 600;
   text-align: center;
   margin: 30px 0px;
 }
 
 #cocktail-detail .cocktail-description h4 {
-  font-weight: 900;
+  font-weight: 500;
+  color: #EB596E;
+  padding-bottom: 10px;
 }
 
 #cocktail-detail .ingredients-measures-list {
   display: flex;
-  justify-content: space-around;
+  justify-content: start;
+  padding: 20px 0px 20px 0px;
+}
+
+#cocktail-detail .measures-container {
+  padding-left: 150px;
 }
 
 #cocktail-detail .cocktail-buttons {
@@ -259,6 +318,7 @@ body {
 }
 
 #cocktail-detail .add-to-favs-container {
+  padding-top: 15px;
   margin-bottom: 1.5rem;
 }
 
@@ -293,6 +353,12 @@ body {
   flex-direction: column;
 }
 
+.form .form-title {
+  text-align: center;
+  padding: 20px 0px 20px 0px;
+  color: #eb596e;
+}
+
 .form .create-edit-title {
   padding-top: 1rem;
   text-align: center;
@@ -305,7 +371,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 10px 20px 10px 20px;
+  margin: 10px 20px 0px 20px;
   background-color: #2b323b;
   border-radius: 10px;
   box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
@@ -370,6 +436,17 @@ body {
   padding-top: 1rem;
   text-align: center;
   color: #EB596E;
+  font-size: 25px;
+  padding: 35px 0px 10px 0px;
+}
+
+#user-profile .user-text {
+  display: flex;
+  flex-direction: column;
+}
+
+#user-profile .user-title {
+  padding-top: 10px;
 }
 
 #user-profile .user-card {
@@ -378,7 +455,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 10px 20px 10px 20px;
+  margin: 10px 20px 0px 20px;
   background-color: #2b323b;
   border-radius: 10px;
   box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
@@ -387,15 +464,20 @@ body {
 #user-profile .user-image {
   width: 200px;
   border-radius: 50%;
+  margin-top: 15px;
 }
 
 #user-profile .email, #user-profile .phone {
-  font-size: 0.8rem;
-  margin-top: -10px;
+  font-size: 1rem;
+  margin-top: 5px;
 }
 
 #user-profile .phone {
   margin-top: -18px;
+}
+
+#user-profile .about-title {
+  padding: 10px;
 }
 
 #user-profile .address-container {
@@ -412,6 +494,11 @@ body {
 #user-profile .address-title-container {
   width: 12rem;
   padding: 0px 10px;
+}
+
+#user-profile .cocktail-name {
+  padding-top: 10px;
+  text-align: center;
 }
 
 #user-profile .buttons-container {
@@ -465,7 +552,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 10px 20px 10px 20px;
+  margin: 10px 20px 0px 20px;
   background-color: #2b323b;
   border-radius: 10px;
   box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
@@ -523,7 +610,8 @@ body {
 }
 
 .form .error-message {
-  color: red;
+  color: #D21F3C;
+  font-weight: 600;
   justify-content: center;
   text-align: center;
 }
@@ -566,7 +654,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 10px 20px 10px 20px;
+  margin: 10px 20px 0px 20px;
   background-color: #2b323b;
   border-radius: 10px;
   box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);

@@ -2,71 +2,75 @@
 
     <h1 class="user-profile-title">Welcome to your personal space</h1>
 
-        <div class="user-card">
-            <img class="user-image"src="{{userImage}}" alt="User Image">
-            <h2 class="cocktail-title">{{username}}</h2>
-            <p class="email">{{email}}</p>
-            <p class="phone">{{phone}}</p>
-            <h3>About me</h3>
-            <p class="about">{{aboutUser}}</p>
-            
-            <div class="address-container">
-                <div class="address-title-container">
-                    <h4>Where I live</h4>
-                    <p class="address">{{address}}</p>
-                </div>
-                <div class="address-map-container">
-                    <iframe width="200" height="200" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q={{address}}&key={{apikey}}" allowfullscreen></iframe>
-                </div>
+    <div class="user-card">
+        <img class="user-image" src="{{userImage}}" alt="User Image">
+        <h2 class="user-title">Username: {{username}}</h2>
+        <p class="email">Email: {{email}}</p>
+        <p class="phone">Phone: {{phone}}</p>
+        <h3 class="about-title">About me</h3>
+        <p class="about">{{aboutUser}}</p>
+
+        <div class="address-container">
+            <div class="address-title-container">
+                <h4>Where I live</h4>
+                <p class="address">{{address}}</p>
             </div>
-
-            <h3>My Favourites</h3>
-            <div class="my-cocktails-container">
-                {{#each favourites}}
-                    <a href="/cocktails/{{_id}}"><img id="my-cocktail-images" src="{{cocktailImage}}" alt="New Cocktail" width="200px"></a>
-                    <p>{{name}}</p>
-                {{/each}}
-            </div>  
-
-            <h3>My own Cocktails creations</h3>
-            <div class="my-cocktails-container">
-                {{#each myCocktails}}
-                    <a href="/cocktails/{{_id}}"><img id="my-cocktail-images" src="{{cocktailImage}}" alt="New Cocktail" width="200px"></a>
-                    <p>{{name}}</p>
-                {{/each}}
-            </div>
-
-
-
-            <div class="buttons-container">
-                <a class="button update-user-button" href="#user-profile-form">Update personal info</a>
-                <a class="button" href="/cocktails/create-cocktail">Create new Cocktail</a>
+            <div class="address-map-container">
+                <iframe width="200" height="200" frameborder="0" style="border:0"
+                    src="https://www.google.com/maps/embed/v1/place?q={{address}}&key={{apikey}}"
+                    allowfullscreen></iframe>
             </div>
         </div>
 
-        <div id="user-profile-form">
-
-                <form class ="user-profile-form-card" action="/auth/user-profile/{{_id}}" method="POST" enctype="multipart/form-data">
-
-                    <label class="label" for="username">Username</label>
-                    <input class="input" type="text" name="username" id="username" value="{{username}}">
-
-                    <label class="label" for="aboutUser">About</label>
-                    <textarea class="input" name="aboutUser" cols="30" rows="3" value="{{aboutUser}}"></textarea>
-
-                    <label class="label" for="phone">Phone Number</label>
-                    <input class="input" type="tel" name="phone" id="phone" value="{{phone}}" pattern="[0-9]{9}">
-
-                    <label class="label" for="address">Address</label>
-                    <input class="input" type="text" name="address" id="address" value="{{address}}">
-
-                    <label class="label" for="userImage">Upload Image</label>
-                    <input type="file" name="userImage" id="userImage">
-
-                    <button type="submit">Update Profile{{button}}</button>
-                </form>
-
+        <h3>My Favourites</h3>
+        <div class="my-cocktails-container">
+            {{#each favourites}}
+            <a href="/cocktails/{{_id}}"><img id="my-cocktail-images" src="{{cocktailImage}}" alt="New Cocktail"
+                    width="200px"></a>
+            <p class="cocktail-name">{{name}}</p>
+            {{/each}}
         </div>
+
+        <h3>My own Cocktails creations</h3>
+        <div class="my-cocktails-container">
+            {{#each myCocktails}}
+            <a href="/cocktails/{{_id}}"><img id="my-cocktail-images" src="{{cocktailImage}}" alt="New Cocktail"
+                    width="200px"></a>
+            <p class="cocktail-name">{{name}}</p>
+            {{/each}}
+        </div>
+
+
+
+        <div class="buttons-container">
+            <a class="button update-user-button" href="#user-profile-form">Update personal info</a>
+            <a class="button" href="/cocktails/create-cocktail">Create new Cocktail</a>
+        </div>
+    </div>
+
+    <div id="user-profile-form">
+
+        <form class="user-profile-form-card" action="/auth/user-profile/{{_id}}" method="POST"
+            enctype="multipart/form-data">
+
+            <label class="label" for="username">Username</label>
+            <input class="input" type="text" name="username" id="username" value="{{username}}">
+
+            <label class="label" for="aboutUser">About</label>
+            <textarea class="input" name="aboutUser" cols="30" rows="3" value="{{aboutUser}}"></textarea>
+
+            <label class="label" for="phone">Phone Number</label>
+            <input class="input" type="tel" name="phone" id="phone" value="{{phone}}" pattern="[0-9]{9}">
+
+            <label class="label" for="address">Address</label>
+            <input class="input" type="text" name="address" id="address" value="{{address}}">
+
+            <label class="label" for="userImage">Upload Image</label>
+            <input type="file" name="userImage" id="userImage">
+
+            <button type="submit">Update Profile{{button}}</button>
+        </form>
+
+    </div>
 
 </div>
-

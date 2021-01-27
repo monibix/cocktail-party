@@ -22,6 +22,7 @@ const getCocktailDetail = async (req, res) => {
         let checkCocktail;
         let isFavourite;
         if (user) {
+            lisFavourite = user.favourites.includes(id)
             checkCocktail = user.myCocktails.includes(id)
             isFavourite = user.favourites.includes(id)
         } else {
