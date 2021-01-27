@@ -24,11 +24,10 @@ const getCocktailDetail = async (req, res) => {
         if (user) {
             lisFavourite = user.favourites.includes(id)
             checkCocktail = user.myCocktails.includes(id)
+            isFavourite = user.favourites.includes(id)
         } else {
             checkCocktail = undefined
         }
-
-        
 
         res.render('cocktail-detail', {cocktailDetails, checkCocktail, _id, isFavourite}) // SI SE NOMBRA LA VARIABLE DE UNA FORMA DISTINTA A _ID NO FUNCIONA
     } catch (error) {
