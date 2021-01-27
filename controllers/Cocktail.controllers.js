@@ -19,14 +19,16 @@ const getCocktailDetail = async (req, res) => {
 
         const cocktailDetails = await Cocktail.findById(id);
         const user = await User.findById(_id);
-        let checkCocktail
+        let checkCocktail;
+        let isFavourite;
         if (user) {
+            lisFavourite = user.favourites.includes(id)
             checkCocktail = user.myCocktails.includes(id)
         } else {
             checkCocktail = undefined
         }
 
-        let isFavourite = user.favourites.includes(id)
+        
 
         res.render('cocktail-detail', {cocktailDetails, checkCocktail, _id, isFavourite}) // SI SE NOMBRA LA VARIABLE DE UNA FORMA DISTINTA A _ID NO FUNCIONA
     } catch (error) {

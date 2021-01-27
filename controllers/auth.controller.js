@@ -70,7 +70,7 @@ const login = async (req, res) => {
         const {email, password} = req.body
         const user = await User.findOne({ email }).lean()
         if (!user) {
-            return res.render('login', {error: "the user does not exist"})
+            return res.render('login', {error: "User does not exist. Try signing up!"})
         }
     
         const verifyPassword = await bcrypt.compare(password, user.password)
@@ -78,7 +78,7 @@ const login = async (req, res) => {
             console.log('Incorrect password!!!!!!')
             //return alert("This password is not correct")
             //return res.send('Incorrect password')
-            return res.render('login', {error: "wrong password"})
+            return res.render('login', {error: "Wrong password. Try again !"})
         }
         console.log('USER LOGGED IN IS:', user)
 

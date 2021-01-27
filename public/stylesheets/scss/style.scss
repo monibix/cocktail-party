@@ -9,6 +9,43 @@ body { //no funciona
     @include footer
 }
 
+.nav {
+    background-color: #313945;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 5px 0px 10px 0px;
+    font-size: 16px;
+    font-weight: 500;
+    .nav-link{
+        color: white
+    }
+    .nav-link:hover{
+        color: #eb596e;
+        text-decoration: underline;
+    }
+    .nav-item{
+        border: none;
+        text-decoration: none;
+        background-color: #313945;
+        color: white;
+        padding-top: 7px;
+    }
+    #signup {
+        border: 2px white solid;
+        border-radius: 25px;
+        padding: 5px 10px 5px 10px;
+    }
+    #signup:hover {
+        border: 2px #eb596e solid;
+        text-decoration: none;
+        border-radius: 25px;
+    }
+}
+
+.footer{
+    padding: 15px;
+    font-size: 15px;
+}
 /*INDEX.HBS*/
 #home {
     background-color: $background-color;
@@ -42,6 +79,10 @@ body { //no funciona
     }
     .destacados-cocktails p, .novedades-cocktails p, .icon p {
         text-align: center;
+    }
+
+    .cocktail-name-home{
+        padding-top: 10px;
     }
 
     /*Section comparte*/
@@ -86,13 +127,15 @@ body { //no funciona
 /*COCKTAILS.HBS*/
 #all-cocktails {
     @include default-settings;
+    padding-top: 20px;
     .cocktail-card {
         @include card;
     }
     .title {
-        color: #EB596E;
-        margin: 10px 10px;
+        color: #eb596e;
+        margin: 0px 10px 0px 10px;
         text-align: center;
+        font-size: 25px;
         /*border-bottom: #EB596E 2px solid;*/
     }
     .cocktail-title{
@@ -100,6 +143,7 @@ body { //no funciona
         font-weight: 900;
         text-align: center;
         margin: 30px 0px 0px 0px;
+        padding: 20px 0px 20px 0px;
         /*text-decoration: underline;*/
     }
     .cocktails-view-images {
@@ -109,8 +153,9 @@ body { //no funciona
         margin: 30px;
     }
     .short-description{
-        font-size: 14px;
+        font-size: 16px;
         text-align: center;
+        padding: 0px 70px 0px 70px;
     }
     .cocktail-link{
         @include button
@@ -152,17 +197,24 @@ body { //no funciona
         padding: 0px 10px;
     }
     .cocktail-title {
-        font-size: 2.25rem;
-        font-weight: 900;
+        color: white;
+        font-size: 2.2rem;
+        font-weight: 600;
         text-align: center;
         margin: 30px 0px;
     } 
     .cocktail-description h4 {
-        font-weight:900;
+        font-weight:500;
+        color: #EB596E;
+        padding-bottom: 10px;
     }
     .ingredients-measures-list {
         display: flex;
-        justify-content: space-around;
+        justify-content: start;
+        padding: 20px 0px 20px 0px;
+    }
+    .measures-container {
+        padding-left: 150px;
     }
     .cocktail-buttons{
         display: flex;
@@ -175,6 +227,7 @@ body { //no funciona
         @include button-hover
     }
     .add-to-favs-container {
+        padding-top: 15px;
         margin-bottom: 1.5rem; 
     }
     #add-to-favs {
@@ -196,6 +249,11 @@ body { //no funciona
     @include default-settings;
         display: flex;
         flex-direction: column;
+    .form-title{
+        text-align: center;
+        padding: 20px 0px 20px 0px;
+        color:#eb596e
+    }
     .create-edit-title {
         @include title;
     }
@@ -239,7 +297,16 @@ body { //no funciona
     @include default-settings;
     padding-bottom: 1.5rem;
     .user-profile-title {
-        @include title
+        @include title;
+        font-size: 25px;
+        padding: 35px 0px 10px 0px;
+    }
+    .user-text{
+        display: flex;
+        flex-direction: column;
+    }
+    .user-title{
+        padding-top: 10px;
     }
     .user-card {
         @include card;
@@ -247,15 +314,18 @@ body { //no funciona
     .user-image {
         width: 200px;
         border-radius: 50%;
+        margin-top: 15px;
     }
     .email, .phone{
-        font-size: 0.8rem;
-        margin-top: -10px;
+        font-size: 1rem;
+        margin-top: 5px;
     }
     .phone {
         margin-top: -18px;
     }
-
+    .about-title{
+        padding: 10px;
+    }
     .address-container {
         display: flex;
         margin-bottom: 30px;
@@ -269,7 +339,10 @@ body { //no funciona
         width: 12rem;
         padding: 0px 10px;
     }
-
+    .cocktail-name{
+        padding-top: 10px;
+        text-align: center;
+    }
     .buttons-container {
         margin: 30px;
     }
@@ -342,7 +415,8 @@ body { //no funciona
 
 .form {
     .error-message {
-    color: red;
+    color: #D21F3C;
+    font-weight: 600;
     justify-content: center;
     text-align: center;
     }
