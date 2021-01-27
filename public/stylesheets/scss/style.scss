@@ -206,6 +206,7 @@ body { //no funciona
             width: 40vw;
         }
     }
+    
 }
 
 /*USER-PROFILE*/
@@ -316,4 +317,13 @@ body { //no funciona
     justify-content: center;
     text-align: center;
     }
+}
+
+/*LOGIN / SIGNUP*/
+.password {
+    display: flex;
+    justify-content: center;
+}
+.seepassword-img {
+    width: 20px;
 }

@@ -478,3 +478,19 @@ body {
     width: 30vw;
   }
 }
+
+.form .error-message {
+  color: red;
+  justify-content: center;
+  text-align: center;
+}
+
+/*LOGIN / SIGNUP*/
+.password {
+  display: flex;
+  justify-content: center;
+}
+
+.seepassword-img {
+  width: 20px;
+}

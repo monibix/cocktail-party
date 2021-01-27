@@ -7,7 +7,12 @@
             {{/if}}
             <input class="input" type="email" name="email" id="email" placeholder="Enter your email here" required>
             <label class="label" for="password">Password</label>
-            <input class="input" class="input" type="password" name="password" id="password" placeholder="Choose a password" required>
+            <div class="password">
+                <input class="input" class="input" type="password" name="password" id="password" placeholder="Choose a password" required>
+                <button type="button" onclick="mostrarContrasena()">
+                    <img class="seepassword-img" src="../images/seepassword.png" alt="Password">
+                </button>
+            </div>            
             <button type="submit">Signup</button>
             {{#if error}}
             <p class="error-message">{{error}}</p>
