@@ -9,6 +9,7 @@ const path = require('path');
 const session = require('express-session');
 const connectSession = require('./bin/session.config')
 
+
 const app_name = require('./package.json').name;
 const debug = require('debug')(
   `${app_name}:${path.basename(__filename).split('.')[0]}`
@@ -17,7 +18,7 @@ const debug = require('debug')(
 const app = express()
 connectSession(app)
 
-app.listen(process.env.PORT, () => {
+app.listen(9000, () => {
     console.log(`Listening on http://localhost:${process.env.PORT}`);
   });
 
@@ -38,6 +39,13 @@ app.use(express.static(path.join(__dirname, '/public/')));
 
 // Configuracion hbs
 hbs.registerPartials(`${__dirname}/views/partials`)
+
+//Configuración socket.io
+// const http = require('http').Server(app);
+// const io = require('socket.io')(http);
+// io.on('connection', (socket) => { //problema con la conexion, no console.log!
+//   console.log('a user connected');
+// });
 
 //Creando una variable local currentUser que contiene el id de la session
 app.use((req, res, next) => {

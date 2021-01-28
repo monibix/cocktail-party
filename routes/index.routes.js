@@ -13,7 +13,6 @@ router.get('/', async(req, res, next) => {
     const lastCocktails = allCocktails.sort((a,b)=>{
         return new Date(b.createdAt) - new Date(a.createdAt)
     }).slice(0,4)
-    console.log("lastCocktails", lastCocktails)
     // const newCreations = await Cocktail.find() //timestamps
     // console.log("NEW CREATIONS", newCreations)
     res.render('index', {filteredCocktails, _id, lastCocktails})

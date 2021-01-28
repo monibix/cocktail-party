@@ -678,3 +678,59 @@ body {
     width: 90vh;
   }
 }
+
+/*CHAT FEATURE*/
+.chat-feature #form {
+  background: rgba(0, 0, 0, 0.15);
+  padding: 0.25rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  height: 3rem;
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+}
+
+.chat-feature #input {
+  border: none;
+  padding: 0 1rem;
+  flex-grow: 1;
+  border-radius: 2rem;
+  margin: 0.25rem;
+}
+
+.chat-feature #input:focus {
+  outline: none;
+}
+
+.chat-feature #form > button {
+  background: #333;
+  border: none;
+  padding: 0 1rem;
+  margin: 0.25rem;
+  border-radius: 3px;
+  outline: none;
+  color: #fff;
+}
+
+.chat-feature #messages {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.chat-feature #messages > li {
+  padding: 0.5rem 1rem;
+}
+
+.chat-feature #messages > li:nth-child(odd) {
+  background: #efefef;
+}
+
+.chat-feature .chat-screen {
+  height: 300px;
+  border: 2px solid green;
+  background-color: #efefef;
+}

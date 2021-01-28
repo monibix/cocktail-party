@@ -90,7 +90,7 @@ const login = async (req, res) => {
 
         req.session.currentUser = user._id;
         res.render('user-profile', user)
-      
+        
     } catch (err) {
         console.log('Error Here!!!!!',err)
     }
