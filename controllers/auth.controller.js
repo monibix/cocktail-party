@@ -86,10 +86,10 @@ const login = async (req, res) => {
         req.session.currentUser = user._id; //adjuntando una key al objeto session que se llama curerentUser y le pasamos user._id
         console.log('req.session.currentUser._id2:', req.session.currentUser)
         // res.render('user-profile', user)
-        res.redirect(`/auth/user-profile/${req.session.currentUser}`)
+        return res.redirect(`/auth/user-profile/${req.session.currentUser}`)
 
-        req.session.currentUser = user._id;
-        res.render('user-profile', user)
+        // req.session.currentUser = user._id;
+        // res.render('user-profile', user)
       
     } catch (err) {
         console.log('Error Here!!!!!',err)
