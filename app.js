@@ -23,7 +23,6 @@ app.listen(process.env.PORT, () => {
 
 // require database configuration
 const connectDB = require('./bin/db.config')
-
 connectDB()
 
 // Middleware Setup

@@ -121,8 +121,8 @@ const cocktailData = [
     },
     {
         name: "Kill the cold Smoothie",
-        "shortDescription": "",
-        "longDescription": "",
+        shortDescription: "Cold symptoms? Hulk juice SMASH! I’m not saying this smoothie will cure you, but it will definitely give you a leg-up this cold season.",
+        longDescription: "Enter, this beauty. A mean, green, cold-fighting machine… this smoothie is like drinking a multivitamin, but I promise it doesn’t taste like one. It has all the nutrients you need, hiding beneath the sweet, tropical taste of pineapple and kiwi (with just a touch of heat from some ginger, to really wake you up",
         category: "Non alcoholic",
         cocktailImage: "https://www.thecocktaildb.com/images/media/drink/7j1z2e1487603414.jpg",
         ingredients: ["Ginger", "Lemon", "Water",],
@@ -130,13 +130,6 @@ const cocktailData = [
         strIngredient3: "Water",
         measures: ["1 inch ", "1/4 ", "1 cup hot "],
     },
-    {
-
-    },
-    {
-
-    }
-
 ];
 
 require("dotenv").config()
