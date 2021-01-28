@@ -1,6 +1,7 @@
 body {
   background-color: #222831;
   color: #fff;
+  font-family: 'Mukta', sans-serif;
 }
 
 .footer {
@@ -11,6 +12,9 @@ body {
 }
 
 .nav {
+  background-color: #222831;
+  color: #fff;
+  font-family: 'Mukta', sans-serif;
   background-color: #313945;
   display: flex;
   justify-content: space-evenly;
@@ -48,6 +52,12 @@ body {
   border-radius: 25px;
 }
 
+@media (min-width: 1000px) {
+  .nav {
+    font-size: 1.3rem;
+  }
+}
+
 .footer {
   padding: 15px;
   font-size: 15px;
@@ -55,6 +65,9 @@ body {
 
 /*INDEX.HBS*/
 #home {
+  background-color: #222831;
+  color: #fff;
+  font-family: 'Mukta', sans-serif;
   background-color: #222831;
   color: #fff;
   /*Section home-image*/
@@ -149,14 +162,26 @@ body {
   #home .carousel-item {
     width: 70vw;
   }
+  #home .home-card {
+    font-size: 20px;
+  }
+  #home .novedades-cocktails {
+    display: flex;
+    padding: 0px 50px;
+  }
+  #home .comparte-icons {
+    display: flex;
+    padding: 0px -30px;
+  }
 }
 
 /*COCKTAILS.HBS*/
 #all-cocktails {
   background-color: #222831;
   color: #fff;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Mukta', sans-serif;
   padding-top: 20px;
+  padding-bottom: 30px;
 }
 
 #all-cocktails .cocktail-card {
@@ -176,7 +201,6 @@ body {
   margin: 0px 10px 0px 10px;
   text-align: center;
   font-size: 25px;
-  /*border-bottom: #EB596E 2px solid;*/
 }
 
 #all-cocktails .cocktail-title {
@@ -185,7 +209,6 @@ body {
   text-align: center;
   margin: 30px 0px 0px 0px;
   padding: 20px 0px 20px 0px;
-  /*text-decoration: underline;*/
 }
 
 #all-cocktails .cocktails-view-images {
@@ -222,8 +245,13 @@ body {
 }
 
 @media (min-width: 1000px) {
+  #all-cocktails #all-cocktails {
+    margin-bottom: 30px;
+    background-color: red;
+  }
   #all-cocktails .cocktail-card {
     margin: 20px 20vw;
+    margin-bottom: 0px;
   }
   #all-cocktails .cocktail-card .cocktails-view-images {
     width: 30vw;
@@ -234,9 +262,10 @@ body {
 #cocktail-detail {
   background-color: #222831;
   color: #fff;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Mukta', sans-serif;
   display: flex;
   flex-direction: column;
+  padding-bottom: 30px;
 }
 
 #cocktail-detail .cocktail-detail-card {
@@ -264,8 +293,7 @@ body {
 #cocktail-detail .right-card {
   display: flex;
   flex-direction: column;
-  margin-top: 1.5rem;
-  padding: 0px 10px;
+  margin: 20px 10px;
 }
 
 #cocktail-detail .cocktail-title {
@@ -284,12 +312,7 @@ body {
 
 #cocktail-detail .ingredients-measures-list {
   display: flex;
-  justify-content: start;
-  padding: 20px 0px 20px 0px;
-}
-
-#cocktail-detail .measures-container {
-  padding-left: 150px;
+  justify-content: space-evenly;
 }
 
 #cocktail-detail .cocktail-buttons {
@@ -342,13 +365,16 @@ body {
   #cocktail-detail .cocktail-image {
     width: 30vw;
   }
+  #cocktail-detail .right-card {
+    margin: 20px 90px;
+  }
 }
 
 /*EDIT-COCKTAIL.HBS (PARTIAL)*/
 .form {
   background-color: #222831;
   color: #fff;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Mukta', sans-serif;
   display: flex;
   flex-direction: column;
 }
@@ -428,7 +454,7 @@ body {
 #user-profile {
   background-color: #222831;
   color: #fff;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Mukta', sans-serif;
   padding-bottom: 1.5rem;
 }
 
@@ -477,18 +503,28 @@ body {
 }
 
 #user-profile .about-title {
-  padding: 10px;
+  padding: 7px;
 }
 
 #user-profile .address-container {
   display: flex;
+  flex-direction: column;
   margin-bottom: 30px;
 }
 
-#user-profile .address-title-container, #user-profile .address-map-container {
-  width: 60%;
+#user-profile .address-title-container {
   align-self: center;
   text-align: center;
+}
+
+#user-profile .address-map-container {
+  margin: 0 auto;
+  text-align: center;
+}
+
+#user-profile .address-map-container iframe {
+  width: 80%;
+  border-radius: 4px;
 }
 
 #user-profile .address-title-container {
@@ -503,6 +539,7 @@ body {
 
 #user-profile .buttons-container {
   margin: 30px;
+  display: flex;
 }
 
 #user-profile .button {
@@ -535,13 +572,30 @@ body {
   #user-profile .user-card {
     margin: 20px 20vw;
   }
+  #user-profile .address-container {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 30px;
+  }
+  #user-profile .my-cocktails-container {
+    display: flex;
+    margin: 10px;
+  }
+  #user-profile .my-cocktails-container img {
+    padding: 0px 20px;
+  }
+  #user-profile .my-cocktails-container p {
+    display: none;
+  }
 }
 
 /*USER PROFILE FORM*/
 #user-profile-form {
   background-color: #222831;
   color: #fff;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Mukta', sans-serif;
   display: none;
   /*NO SE APLICA ESTILO EN MY COCKTAILS CREATIONS*/
 }
@@ -637,11 +691,15 @@ body {
   transition-duration: 0.4s;
 }
 
+.my-cocktails-container p {
+  text-align: center;
+}
+
 /*CHAT*/
 .chat-container {
   background-color: #222831;
   color: #fff;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Mukta', sans-serif;
   padding: 1.5rem 0;
   height: 90vh;
   display: flex;

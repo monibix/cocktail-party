@@ -16,7 +16,6 @@ const getCocktailDetail = async (req, res) => {
     try {
         const _id = req.session.currentUser;
         const { id } = req.params
-
         const cocktailDetails = await Cocktail.findById(id);
         const user = await User.findById(_id);
         let checkCocktail;
@@ -28,7 +27,6 @@ const getCocktailDetail = async (req, res) => {
         } else {
             checkCocktail = undefined
         }
-
         res.render('cocktail-detail', {cocktailDetails, checkCocktail, _id, isFavourite}) // SI SE NOMBRA LA VARIABLE DE UNA FORMA DISTINTA A _ID NO FUNCIONA
     } catch (error) {
         console.log('There is an error in the route getCocktailDetail', error)
@@ -55,7 +53,6 @@ const {measure1, measure2, measure3, measure4, measure5} = data
 return [measure1, measure2, measure3, measure4, measure5].filter(Boolean)
 }
 
-
 const createCocktail = async (req, res) => {
     try {
         const _id = req.session.currentUser
@@ -64,11 +61,7 @@ const createCocktail = async (req, res) => {
         const measures = formatMeasures(req.body)
         const cocktailImage = req.file.path
         const newRecipe = await Cocktail.create({name, shortDescription, longDescription, category, instructions, cocktailImage, ingredients, measures, cocktailOwner: _id})
-        
         const userCreateCocktail = await User.findByIdAndUpdate(_id, {$push:{myCocktails:newRecipe._id}}, {new:true})
-        console.log("USERCREATECOCKTAIL", userCreateCocktail)
-        
-        console.log('this is your new cocktail', newRecipe)
         res.redirect('/auth/user-profile/'+_id)
     } catch (error) {
         console.log('There is an error in the route createCocktail', error)
@@ -78,7 +71,6 @@ const createCocktail = async (req, res) => {
 const deleteCocktail = async (req, res) => {
     try {
         const { id } = req.params
-        console.log("ID", id)
         await Cocktail.findByIdAndRemove(id)
         res.redirect("/cocktails")
     } catch (error) {
@@ -103,8 +95,6 @@ const editView = async (req, res) => {
         const { ingredients, measures, ...resCocktail } = await Cocktail.findById(id).lean();
         const formattedIngredients = formatData(ingredients, "ingredient")
         const formattedMeasure = formatData(measures, "measure")
-        console.log("RESCOCKTAIL", resCocktail)
-
         res.render('edit-cocktail', {action, button, ...resCocktail, ...formattedIngredients, ...formattedMeasure, _id })
     } catch (error) {
         console.log('There is an error in the route editCocktail', error)
@@ -139,14 +129,8 @@ const updateCocktail = async (req, res) => {
                 measures: measures
                 }
         }
-        console.log("NEWOBJECT", newObj)
         const cocktail = await Cocktail.findByIdAndUpdate(id, newObj, {new:true})
-
-        -
         res.redirect(`/cocktails/${id}`)
-        // res.render('cocktail-detail', {...cocktail,  _id})
-        // res.redirect('/{{id}}/edit')
-
     } catch (error) {
         console.log('There is an error in the updateCocktail', error)
     }
@@ -156,8 +140,6 @@ const addToFavourites = async (req, res) => {
     try {
         const { id } = req.params
         const _id = req.session.currentUser
-        //const cocktail = await Cocktail.findById(id).lean()
-        //console.log("COCKTAIL", cocktail)
         const user = await User.findById(_id)
         let isFavourite = user.favourites.includes(id)
         let addFavouriteCocktail
@@ -167,36 +149,11 @@ const addToFavourites = async (req, res) => {
         else {
             addFavouriteCocktail = await User.findByIdAndUpdate(_id, { $push: { favourites: id } }, { new: true })
         }
-
-
-
-        console.log("USER WITH FAVOURITES", addFavouriteCocktail)
         res.redirect(`/cocktails/${id}`)
     } catch (error) {
         console.log('There is an error in addToFavoruites!', error)
     }
 }
-
-const getFavourites = async (req,res)  => {
-    try{
-        const _id = req.session.currentUser;
-        const { favourites } = await User.findById(_id)
-        console.log("THESE ARE THE FAVOURTIES", favourites)
-        res.render('user-favourites', {favourites, _id})
-        // const cocktailsList = await Cocktail.find({});
-        // console.log("this is the cocktails list:", cocktailsList);
-        // const cocktails = cocktailsList.map(cocktail => {
-        // const isFavourite = favourites.includes(cocktail._id)
-        // return {
-        //       ...cocktail,
-        //       isFavourite
-        // }
-        // })
-        // res.render("user-favourites", {cocktails})
-    }catch(err){
-        console.log('There is an error in getFavourites', error)
-    }
-};
 
 module.exports = {
     getCocktails,

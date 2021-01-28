@@ -1,8 +1,6 @@
-{{!-- <h1>Cocktail Party!</h1> --}}
-
 <div id="home">
         
-        <div class="home-card">
+    <div class="home-card">
 
     <div id="homeCarousel" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
@@ -26,67 +24,66 @@
     </a>
     </div>
 
+        <section class="destacados">
+            <div class="destacados-title">
+                <h3>Destacados</h3>
+                <p>Los cocktails más populares del momento</p>
+            </div>
+            <div class="destacados-cocktails">
+            {{#each filteredCocktails}}
+            <div class="novedades-cocktails">
+                <div class="cocktail-1">
+                    <a href="/cocktails/{{_id}}"><img src="{{cocktailImage}}" alt="{{name}}"></a>
+                    <p class="cocktail-name-home">{{name}}</p>
+                </div>
+            {{/each }}
+            </div>
+        </section>
 
-<section class="destacados">
-    <div class="destacados-title">
-        <h3>Destacados</h3>
-        <p>Los cocktails más populares del momento</p>
-    </div>
-    <div class="destacados-cocktails">
-    {{#each filteredCocktails}}
-        <div class="destacados-cocktails">
-        <div class="cocktail-1">
-            <a href="/cocktails/{{_id}}"><img src="{{cocktailImage}}" alt="{{name}}"></a>
-            <p class="cocktail-name-home">{{name}}</p>
-        </div>
-    {{/each }}
-    </div>
-</section>
 
+        <section class="destacados">
+            <div class="destacados-title">
+                <h3>Novedades</h3>
+                <p>Descubre las últimas creaciones de los usuarios</p>
+            </div>
+            <div class="destacados-cocktails">
+            {{#each lastCocktails}}
+                <div class="novedades-cocktails">
+                <div class="cocktail-1">
+                    <a href="/cocktails/{{_id}}"><img src="{{cocktailImage}}" alt="{{name}}"></a>
+                    <p class="cocktail-name-home">{{name}}</p>
+                </div>
+            {{/each }}
+            </div>
+        </section>
 
-<section class="destacados">
-    <div class="destacados-title">
-        <h3>Novedades</h3>
-        <p>Descubre las últimas creaciones de los usuarios</p>
-    </div>
-    <div class="destacados-cocktails">
-    {{#each lastCocktails}}
-        <div class="novedades-cocktails">
-        <div class="cocktail-1">
-            <a href="/cocktails/{{_id}}"><img src="{{cocktailImage}}" alt="{{name}}"></a>
-            <p class="cocktail-name-home">{{name}}</p>
-        </div>
-    {{/each }}
-    </div>
-</section>
-
-<section class="comparte">
-    <div class="comparte-title">
-        <h3>Comparte tus Creaciones</h3>
-        <p>Publica tus cócteles y conoce a los demás creadores</p>
-    </div>
-    <div class="comparte-icons">
-        <div class="icon">
-            <img src="/images/registra.png" alt="registra">
-            <p>Registrate</p>
-        </div>
-        <div class="icon">
-            <img src="/images/completa.png" alt="completa">
-            <p>Completa tu perfil</p>
-        </div>
-        <div class="icon">
-            <img src="/images/crea.png" alt="crea">
-            <p>Crea tu cocktail</p>
-        </div>
-        <div class="icon">
-            <img src="/images/publica.png" alt="publica">
-            <p>Publícalo en Cocktail Party!</p>
-        </div>
-    </div>
-    <div class="button">
-        <a href="/auth/signup">Empieza ahora</a>
-    </div>
-</section>
+        <section class="comparte">
+            <div class="comparte-title">
+                <h3>Comparte tus Creaciones</h3>
+                <p>Publica tus cócteles y conoce a los demás creadores</p>
+            </div>
+            <div class="comparte-icons">
+                <div class="icon">
+                    <img src="/images/registra.png" alt="registra">
+                    <p>Registrate</p>
+                </div>
+                <div class="icon">
+                    <img src="/images/completa.png" alt="completa">
+                    <p>Completa tu perfil</p>
+                </div>
+                <div class="icon">
+                    <img src="/images/crea.png" alt="crea">
+                    <p>Crea tu cocktail</p>
+                </div>
+                <div class="icon">
+                    <img src="/images/publica.png" alt="publica">
+                    <p>Publícalo en Cocktail Party!</p>
+                </div>
+            </div>
+            <div class="button">
+                <a href="/auth/signup">Empieza ahora</a>
+            </div>
+        </section>
 
     </div>
 

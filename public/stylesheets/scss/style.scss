@@ -3,13 +3,15 @@
 
 body { //no funciona
     background-color: #222831;
-    color: $text-color
+    color: $text-color;
+    font-family: 'Mukta', sans-serif;
 }
 .footer {
-    @include footer
+    @include footer;
 }
 
 .nav {
+    @include default-settings;
     background-color: #313945;
     display: flex;
     justify-content: space-evenly;
@@ -40,6 +42,9 @@ body { //no funciona
         text-decoration: none;
         border-radius: 25px;
     }
+    @media (min-width:1000px){
+        font-size: 1.3rem;
+    }
 }
 
 .footer{
@@ -48,6 +53,7 @@ body { //no funciona
 }
 /*INDEX.HBS*/
 #home {
+    @include default-settings;
     background-color: $background-color;
     color: $text-color;
 
@@ -80,11 +86,9 @@ body { //no funciona
     .destacados-cocktails p, .novedades-cocktails p, .icon p {
         text-align: center;
     }
-
     .cocktail-name-home{
         padding-top: 10px;
     }
-
     /*Section comparte*/
     .icon {
         width: 25vw;
@@ -120,6 +124,17 @@ body { //no funciona
         .carousel-item {
             width: 70vw;
         }
+        .home-card {
+            font-size: 20px;
+        }
+        .novedades-cocktails {
+            display: flex;
+            padding: 0px 50px;
+        }
+        .comparte-icons {
+            display: flex;
+            padding: 0px -30px;
+        }
     }
 
 }
@@ -128,6 +143,7 @@ body { //no funciona
 #all-cocktails {
     @include default-settings;
     padding-top: 20px;
+    padding-bottom: 30px;
     .cocktail-card {
         @include card;
     }
@@ -136,7 +152,6 @@ body { //no funciona
         margin: 0px 10px 0px 10px;
         text-align: center;
         font-size: 25px;
-        /*border-bottom: #EB596E 2px solid;*/
     }
     .cocktail-title{
         font-size: 28px;
@@ -144,7 +159,6 @@ body { //no funciona
         text-align: center;
         margin: 30px 0px 0px 0px;
         padding: 20px 0px 20px 0px;
-        /*text-decoration: underline;*/
     }
     .cocktails-view-images {
         align-self: center;
@@ -165,8 +179,13 @@ body { //no funciona
     }
 
     @media (min-width:1000px) {
+        #all-cocktails {
+            margin-bottom: 30px;
+            background-color:red;
+        }
         .cocktail-card {
             @include media-query-card;
+            margin-bottom: 0px;
             .cocktails-view-images {
                 width: 30vw;
             }
@@ -179,6 +198,7 @@ body { //no funciona
     @include default-settings;
         display: flex;
         flex-direction: column;
+        padding-bottom: 30px;
     .cocktail-detail-card {
         @include card
     }
@@ -193,8 +213,7 @@ body { //no funciona
     .right-card {
         display: flex;
         flex-direction: column;
-        margin-top: 1.5rem;
-        padding: 0px 10px;
+        margin: 20px 10px;
     }
     .cocktail-title {
         color: white;
@@ -210,11 +229,7 @@ body { //no funciona
     }
     .ingredients-measures-list {
         display: flex;
-        justify-content: start;
-        padding: 20px 0px 20px 0px;
-    }
-    .measures-container {
-        padding-left: 150px;
+        justify-content: space-evenly;
     }
     .cocktail-buttons{
         display: flex;
@@ -240,6 +255,9 @@ body { //no funciona
         }
         .cocktail-image {
             width: 30vw;
+        }
+        .right-card {
+            margin: 20px 90px;
         }
     }
 }
@@ -324,16 +342,24 @@ body { //no funciona
         margin-top: -18px;
     }
     .about-title{
-        padding: 10px;
+        padding: 7px;
     }
     .address-container {
         display: flex;
+        flex-direction: column;
         margin-bottom: 30px;
     }
-    .address-title-container, .address-map-container {
-        width: 60%;
+    .address-title-container {
         align-self: center;
         text-align: center;
+    }
+    .address-map-container {
+        margin: 0 auto;
+        text-align: center;
+    }
+    .address-map-container iframe{
+        width: 80%;
+        border-radius: 4px;
     }
     .address-title-container {
         width: 12rem;
@@ -345,6 +371,7 @@ body { //no funciona
     }
     .buttons-container {
         margin: 30px;
+        display: flex;
     }
     .button {
         @include button;
@@ -362,6 +389,23 @@ body { //no funciona
     @media (min-width: 1000px) {
         .user-card {
             @include media-query-card;
+        }
+        .address-container {
+            width: 50%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            margin: 30px;
+        }
+        .my-cocktails-container {
+            display: flex;
+            margin: 10px;
+        }
+        .my-cocktails-container img {
+            padding: 0px 20px;
+        }
+        .my-cocktails-container p {
+            display: none;
         }
     }
 
@@ -428,6 +472,9 @@ body { //no funciona
 }
 .chat-button:hover {
     @include button-hover
+}
+.my-cocktails-container p {
+    text-align: center;
 }
 
 /*CHAT*/
