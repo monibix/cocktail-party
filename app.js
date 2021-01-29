@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser')
 const express = require('express');
 const hbs = require('hbs');
 const mongoose = require('mongoose');
+const favicon = require('express-favicon');
 const path = require('path');
 const session = require('express-session');
 const connectSession = require('./bin/session.config')
@@ -29,11 +30,15 @@ connectDB()
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+//Favicon
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
+
 
 // Express View engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, '/public/')));
+
 
 // Configuracion hbs
 hbs.registerPartials(`${__dirname}/views/partials`)
