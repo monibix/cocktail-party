@@ -1,6 +1,11 @@
+@font-face {
+  font-family: 'billabong';
+  src: url("/fonts/Billabong.ttf");
+}
+
 body {
   background-color: #222831;
-  color: #fff;
+  color: #eb596e;
   font-family: 'Mukta', sans-serif;
 }
 
@@ -11,28 +16,52 @@ body {
   text-align: center;
 }
 
-.nav {
-  background-color: #222831;
-  color: #fff;
+/*NAVBAR*/
+.navbar {
   font-family: 'Mukta', sans-serif;
   background-color: #313945;
-  display: flex;
-  justify-content: space-evenly;
-  padding: 5px 0px 10px 0px;
-  font-size: 16px;
-  font-weight: 500;
 }
 
-.nav .nav-link {
+.navbar #logo {
+  margin-left: 10px;
+  margin-right: 15px;
+}
+
+.navbar #app-title {
+  font-family: 'billabong';
+  font-size: 1.7rem;
+}
+
+.navbar .nav-link {
   color: white;
 }
 
-.nav .nav-link:hover {
+.navbar .nav-link:hover {
   color: #eb596e;
   text-decoration: underline;
 }
 
-.nav .nav-item {
+.navbar #text-home:hover {
+  color: #eb596e;
+}
+
+.navbar #text-cocktails:hover {
+  color: #eb596e;
+}
+
+.navbar #text-bartender:hover {
+  color: #eb596e;
+}
+
+.navbar #text-logout:hover {
+  color: #eb596e;
+}
+
+.navbar #text-login:hover {
+  color: #eb596e;
+}
+
+.navbar .nav-item {
   border: none;
   text-decoration: none;
   background-color: #313945;
@@ -40,21 +69,36 @@ body {
   padding-top: 7px;
 }
 
-.nav #signup {
+.navbar #signup {
   border: 2px white solid;
   border-radius: 25px;
   padding: 5px 10px 5px 10px;
+  text-align: center;
 }
 
-.nav #signup:hover {
+.navbar #signup:hover {
   border: 2px #eb596e solid;
   text-decoration: none;
   border-radius: 25px;
+  color: #eb596e;
 }
 
 @media (min-width: 1000px) {
-  .nav {
+  .navbar {
     font-size: 1.3rem;
+  }
+  .navbar .navbar-brand {
+    margin-left: 7rem;
+    padding: 0px;
+  }
+  .navbar #app-title {
+    font-size: 2rem;
+  }
+  .navbar #logo {
+    margin-top: 1px;
+    margin-right: 1.5rem;
+    width: 10%;
+    height: 10%;
   }
 }
 
@@ -663,11 +707,39 @@ body {
   }
 }
 
+/*SIGNUP - LOGIN*/
+.form {
+  height: 80vh;
+  text-align: center;
+  justify-content: center;
+}
+
+.form .form-title {
+  margin-top: 2rem;
+}
+
 .form .error-message {
   color: #D21F3C;
   font-weight: 600;
   justify-content: center;
   text-align: center;
+}
+
+.form .redirect-message {
+  color: #fff;
+  font-weight: 600;
+  justify-content: center;
+  text-align: center;
+}
+
+@media (min-width: 1000px) {
+  .form .form {
+    height: 100vh;
+  }
+  .form .form-title {
+    margin-top: 60px;
+    margin-bottom: -10px;
+  }
 }
 
 /*USER PROFILE PUBLIC*/
@@ -701,7 +773,7 @@ body {
   color: #fff;
   font-family: 'Mukta', sans-serif;
   padding: 1.5rem 0;
-  height: 90vh;
+  height: 85vh;
   display: flex;
   align-items: center;
 }

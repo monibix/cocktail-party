@@ -1,29 +1,52 @@
 @import 'variables';
 @import 'mixins';
+@font-face {
+    font-family: 'billabong';
+    src: url('/fonts/Billabong.ttf');
+  }
 
 body { //no funciona
     background-color: #222831;
-    color: $text-color;
+    color: #eb596e;
     font-family: 'Mukta', sans-serif;
 }
 .footer {
     @include footer;
 }
 
-.nav {
-    @include default-settings;
+/*NAVBAR*/
+.navbar {
+    font-family: 'Mukta', sans-serif;
     background-color: #313945;
-    display: flex;
-    justify-content: space-evenly;
-    padding: 5px 0px 10px 0px;
-    font-size: 16px;
-    font-weight: 500;
-    .nav-link{
-        color: white
+    #logo {
+        margin-left: 10px;
+        margin-right: 15px
     }
-    .nav-link:hover{
-        color: #eb596e;
+    #app-title {
+        font-family: 'billabong';
+        font-size: 1.7rem;
+    }
+    .nav-link {
+    color: white
+    }
+    .nav-link:hover {
+        color: #eb596e; //no aplica
         text-decoration: underline;
+    }
+    #text-home:hover {
+        color: #eb596e;
+    }
+    #text-cocktails:hover {
+        color: #eb596e;
+    }
+    #text-bartender:hover {
+        color: #eb596e;
+    }
+    #text-logout:hover {
+        color: #eb596e;
+    }
+    #text-login:hover {
+        color: #eb596e;
     }
     .nav-item{
         border: none;
@@ -36,16 +59,32 @@ body { //no funciona
         border: 2px white solid;
         border-radius: 25px;
         padding: 5px 10px 5px 10px;
+        text-align: center;
     }
     #signup:hover {
         border: 2px #eb596e solid;
         text-decoration: none;
         border-radius: 25px;
+        color: #eb596e;
     }
     @media (min-width:1000px){
         font-size: 1.3rem;
+        .navbar-brand {
+            margin-left: 7rem;
+            padding: 0px;
+        }
+        #app-title {
+            font-size: 2rem;
+        }
+        #logo {
+            margin-top: 1px;
+            margin-right: 1.5rem;
+            width: 10%;
+            height: 10%;
+        }
     }
 }
+
 
 .footer{
     padding: 15px;
@@ -457,12 +496,34 @@ body { //no funciona
     }
 }
 
+/*SIGNUP - LOGIN*/
 .form {
-    .error-message {
-    color: #D21F3C;
-    font-weight: 600;
-    justify-content: center;
+    height: 80vh;
     text-align: center;
+    justify-content: center;
+    .form-title {
+        margin-top: 2rem;
+    }
+    .error-message {
+        color: #D21F3C;
+        font-weight: 600;
+        justify-content: center;
+        text-align: center;
+    }
+    .redirect-message {
+        color: #fff;
+        font-weight: 600;
+        justify-content: center;
+        text-align: center;
+    }
+    @media (min-width: 1000px) {
+        .form {
+            height: 100vh;
+        }
+        .form-title{
+            margin-top: 60px;
+            margin-bottom: -10px;
+        }
     }
 }
 
@@ -481,7 +542,7 @@ body { //no funciona
 .chat-container {
     @include default-settings;
     padding: 1.5rem 0;
-    height: 90vh;
+    height: 85vh;
     display: flex;
     align-items: center;
     .chat-card-container {
