@@ -708,12 +708,6 @@ body {
 }
 
 /*SIGNUP - LOGIN*/
-.form {
-  height: 80vh;
-  text-align: center;
-  justify-content: center;
-}
-
 .form .form-title {
   margin-top: 2rem;
 }
