@@ -3,7 +3,7 @@
 @font-face {
     font-family: 'billabong';
     src: url('/fonts/Billabong.ttf');
-  }
+}
 
 body { //no funciona
     background-color: #222831;
@@ -315,7 +315,7 @@ body { //no funciona
         @include title;
     }
     .update-edit-form{
-        @include card;
+        @include card
     }
     .ingredients-measures {
         display: flex;
@@ -498,9 +498,6 @@ body { //no funciona
 
 /*SIGNUP - LOGIN*/
 .form {
-    height: 80vh;
-    text-align: center;
-    justify-content: center;
     .form-title {
         margin-top: 2rem;
     }
